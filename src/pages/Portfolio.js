@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// Exporting projects so ProjectDetail.js can use them
+// --- DATA EXPORT (Required for ProjectDetail) ---
 export const projects = [
   {
     id: 1,

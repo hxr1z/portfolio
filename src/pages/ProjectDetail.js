@@ -5,7 +5,9 @@ import { projects } from './Portfolio';
 
 const ProjectDetail = () => {
   const { id } = useParams();
-  const project = projects.find(p => p.id === parseInt(id));
+  
+  // Safe find: ensures projects exists before searching
+  const project = projects ? projects.find(p => p.id === parseInt(id)) : null;
 
   // Scroll to top when component mounts
   useEffect(() => {
@@ -13,11 +15,9 @@ const ProjectDetail = () => {
   }, []);
 
   if (!project) return (
-    <div className="min-h-screen flex items-center justify-center bg-[#F9F9F9]">
-      <div className="text-center">
-        <h2 className="font-serif text-2xl mb-4">Project not found</h2>
-        <Link to="/" className="text-indigo-600 hover:underline">Return Home</Link>
-      </div>
+    <div className="min-h-screen flex items-center justify-center bg-[#F9F9F9] flex-col gap-4">
+      <h2 className="font-serif text-2xl">Project not found</h2>
+      <Link to="/" className="text-indigo-600 font-bold hover:underline">Return Home</Link>
     </div>
   );
 
