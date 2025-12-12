@@ -4,6 +4,18 @@ import { Link } from 'react-router-dom';
 // Data with Categories AND Gallery Images
 export const projects = [
   {
+    id: 6,
+    title: "Task List Manager App",
+    description: "A Business Card which can project objects in augmented reality when pointed at with a camera.",
+    image: `${process.env.PUBLIC_URL}/images/VR Card/Screenshot 2025-12-12 111158.png`, 
+    category: "Web Development",
+    gallery: [
+      `${process.env.PUBLIC_URL}/images/VR Card/IMG_1568.png`,
+      `${process.env.PUBLIC_URL}/images/VR Card/FULL JPG.jpeg`,
+      `${process.env.PUBLIC_URL}/images/VR Card/Muhammad Hariz Video Submission.mp4`,
+    ]
+  },
+  {
     id: 1,
     title: "AR Business Card with Logo",
     description: "A Business Card which can project objects in augmented reality when pointed at with a camera.",
