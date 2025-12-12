@@ -109,10 +109,17 @@ const App = () => {
         <footer className="bg-[#F9F9F9] text-black py-12 text-center border-t border-gray-200 mt-auto">
           <div className="max-w-4xl mx-auto flex flex-col items-center gap-4">
             <h3 className="font-serif text-2xl font-bold">TheHarizPortfolio</h3>
+            
+            {/* --- UPDATED LINKS HERE --- */}
             <div className="flex gap-4 text-gray-600">
-               <Mail className="w-5 h-5 cursor-pointer hover:text-indigo-600 transition-colors" />
-               <Linkedin className="w-5 h-5 cursor-pointer hover:text-indigo-600 transition-colors" />
+               <a href="mailto:24034847@myrp.edu.sg" aria-label="Email Me">
+                 <Mail className="w-5 h-5 cursor-pointer hover:text-indigo-600 transition-colors" />
+               </a>
+               <a href="https://www.linkedin.com/in/mdharizjasni" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
+                 <Linkedin className="w-5 h-5 cursor-pointer hover:text-indigo-600 transition-colors" />
+               </a>
             </div>
+
             <p className="text-[10px] tracking-widest uppercase text-gray-400 mt-4">&copy; 2025 Hariz Jasni. All Rights Reserved.</p>
           </div>
         </footer>

@@ -15,31 +15,36 @@ const Contact = () => {
             software development, and design.
             </p>
             <p>
-            Feel free to reach out at <span className="font-bold text-indigo-600">mdhariz2007@icloud.com</span> or 
+            Feel free to reach out at <span className="font-bold text-indigo-600">24034847@myrp.edu.sg</span> or 
             use the form below.
             </p>
         </div>
 
-        <form className="space-y-6 bg-white p-8 md:p-12 rounded-2xl shadow-xl shadow-gray-100">
+        {/* --- FORM UPDATE START --- */}
+        <form 
+          action="https://formspree.io/f/xldqoaok" // <--- PASTE YOUR ID HERE
+          method="POST"
+          className="space-y-6 bg-white p-8 md:p-12 rounded-2xl shadow-xl shadow-gray-100"
+        >
             <div className="grid md:grid-cols-2 gap-6">
             <div className="flex flex-col">
                 <label className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">First Name</label>
-                <input type="text" className="border-b-2 border-gray-200 bg-transparent p-3 outline-none focus:border-indigo-600 transition-colors" />
+                <input type="text" name="firstName" required className="border-b-2 border-gray-200 bg-transparent p-3 outline-none focus:border-indigo-600 transition-colors" />
             </div>
             <div className="flex flex-col">
                 <label className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Last Name</label>
-                <input type="text" className="border-b-2 border-gray-200 bg-transparent p-3 outline-none focus:border-indigo-600 transition-colors" />
+                <input type="text" name="lastName" required className="border-b-2 border-gray-200 bg-transparent p-3 outline-none focus:border-indigo-600 transition-colors" />
             </div>
             </div>
 
             <div className="flex flex-col">
             <label className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Email *</label>
-            <input type="email" required className="border-b-2 border-gray-200 bg-transparent p-3 outline-none focus:border-indigo-600 transition-colors" />
+            <input type="email" name="email" required className="border-b-2 border-gray-200 bg-transparent p-3 outline-none focus:border-indigo-600 transition-colors" />
             </div>
 
             <div className="flex flex-col">
             <label className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Message</label>
-            <textarea rows="4" className="border-2 border-gray-100 bg-gray-50 p-3 rounded-lg outline-none focus:border-indigo-600 focus:bg-white transition-all"></textarea>
+            <textarea name="message" rows="4" required className="border-2 border-gray-100 bg-gray-50 p-3 rounded-lg outline-none focus:border-indigo-600 focus:bg-white transition-all"></textarea>
             </div>
 
             <div className="pt-4">
@@ -48,6 +53,8 @@ const Contact = () => {
             </button>
             </div>
         </form>
+        {/* --- FORM UPDATE END --- */}
+
       </div>
     </section>
   );

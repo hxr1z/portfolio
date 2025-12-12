@@ -11,7 +11,7 @@ const skills = [
   { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg' },
   { name: 'Photoshop', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/photoshop/photoshop-original.svg' },
   { name: 'Illustrator', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/illustrator/illustrator-original.svg' },
-  { name: 'Power BI', icon: 'https://cdn.worldvectorlogo.com/logos/power-bi-1.svg' },
+  { name: 'Power BI', icon: 'https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg' },
   { name: 'Tableau', icon: 'https://cdn.worldvectorlogo.com/logos/tableau-software.svg' },
   { name: 'Unity', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/unity/unity-original.svg' },
 ];
@@ -19,31 +19,46 @@ const skills = [
 const certificates = [
   { 
     id: 1, 
-    title: 'Edusave Merit Bursary 2024', 
+    title: 'Edusave EAGLES Award 2023', 
     issuer: 'MOE Singapore', 
-    date: '2024',
-    pdf: '/certificates/edusave-2024.pdf' 
+    date: '2023',
+    // FIXED: Using process.env.PUBLIC_URL to handle the folder path correctly
+    pdf: `${process.env.PUBLIC_URL}/certificates/EAGLES_2023.pdf`
   },
   { 
     id: 2, 
-    title: 'Edusave Award For Achievement, Good Leadership and Service (EAGLES)', 
-    issuer: 'MOE Singapore', 
-    date: '2023',
-    pdf: '/certificates/EAGLES_2023.pdf'
+    title: 'Certificate of Participation', 
+    issuer: 'Outward Bound Singapore', 
+    date: '2022',
+    pdf: `${process.env.PUBLIC_URL}/certificates/Outward Bound Singapore.pdf`
   },
   { 
     id: 3, 
-    title: 'UI/UX Design Fundamentals', 
-    issuer: 'Coursera', 
-    date: '2023',
-    pdf: '/certificates/coursera-uiux.pdf'
+    title: 'The Glocal Perspectives Programme', 
+    issuer: 'Swiss Cottage Secondary School', 
+    date: '2021',
+    pdf: `${process.env.PUBLIC_URL}/certificates/Glocal Persepctives.pdf`
   },
   { 
     id: 4, 
-    title: 'Certified Unity Developer', 
-    issuer: 'Unity Technologies', 
-    date: '2022',
-    pdf: '/certificates/unity-cert.pdf'
+    title: 'Edusave Scholarship', 
+    issuer: 'MOE Singapore', 
+    date: '2020',
+    pdf: `${process.env.PUBLIC_URL}/certificates/Edusave Scholarship 2020.pdf`
+  },
+  { 
+    id: 5, 
+    title: 'Edusave Character Award', 
+    issuer: 'MOE Singapore', 
+    date: '2020',
+    pdf: `${process.env.PUBLIC_URL}/certificates/Edusave Character 2020.pdf`
+  },
+  { 
+    id: 6, 
+    title: 'Edusave Good Progress Award', 
+    issuer: 'MOE Singapore', 
+    date: '2019',
+    pdf: `${process.env.PUBLIC_URL}/certificates/Edusave Good Progress 2019.pdf`
   },
 ];
 
@@ -63,8 +78,9 @@ const About = () => {
           </p>
         </div>
         
+        {/* FIXED: Using process.env.PUBLIC_URL for the resume download */}
         <a 
-          href="/DDDD_Resume_Hariz_2025.pdf" 
+          href={`${process.env.PUBLIC_URL}/DDDD_Resume_Hariz_2025.pdf`}
           download 
           className="mt-6 md:mt-0 inline-flex items-center gap-3 px-6 py-3 bg-black text-white text-xs font-bold tracking-widest uppercase hover:bg-indigo-600 transition-colors rounded-sm"
         >
