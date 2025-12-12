@@ -17,7 +17,7 @@ export const projects = [
   {
     id: 6,
     title: "Task List Manager App",
-    description: "A React Native prototype mobile application that allows you to keep track of tasks and indicate their completion status, while providing a summary of unfinished and completed tasks.",
+    description: "A React Native app that allows you to keep track of tasks and indicate their completion status, while providing a summary of unfinished and completed tasks.",
     image: `${process.env.PUBLIC_URL}`, 
     category: "Mobile Development",
     gallery: [
