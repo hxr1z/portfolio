@@ -7,12 +7,13 @@ export const projects = [
     id: 1,
     title: "AR Business Card with Logo",
     description: "A Business Card which can project objects in augmented reality when pointed at with a camera.",
-    image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=800&auto=format&fit=crop", 
+    image: `${process.env.PUBLIC_URL}/images/VR Card/Screenshot 2025-12-12 111158.png`, 
     category: "Immersive Technologies",
     // Add extra photos here
     gallery: [
-      "https://images.unsplash.com/photo-1626379953822-baec19c3accd?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop"
+      `${process.env.PUBLIC_URL}/images/VR Card/IMG_1568.png`,
+      `${process.env.PUBLIC_URL}/images/VR Card/FULL JPG.jpeg`,
+      `${process.env.PUBLIC_URL}/images/VR Card/Muhammad Hariz Video Submission.mp4`,
     ]
   },
   {

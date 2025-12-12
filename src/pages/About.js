@@ -18,6 +18,13 @@ const skills = [
 
 const certificates = [
   { 
+    id: 7, 
+    title: 'Data Analytics in Power BI', 
+    issuer: 'Republic Polytechnic', 
+    date: '2024',
+    pdf: `${process.env.PUBLIC_URL}/certificates/Certificate((Non-FQ) Certificate of Completion)_20251212112324.pdf`
+  },
+  { 
     id: 1, 
     title: 'Edusave EAGLES Award 2023', 
     issuer: 'MOE Singapore', 
@@ -94,7 +101,7 @@ const About = () => {
         {/* --- 1. Bio Section --- */}
         <div className="font-sans text-lg leading-relaxed text-gray-600 max-w-3xl">
           <p className="mb-6">
-            I'm <span className="font-bold text-black">Hariz</span>, a Digital Design and Development student at Republic Polytechnic.
+            I'm <span className="font-bold text-black">Hariz</span>, a Diploma in Digital Design and Development student at Republic Polytechnic.
           </p>
           <p>
             I bridge the gap between creative design and technical engineering. Whether it's building immersive AR experiences in Unity or crafting clean web applications with React, I focus on functionality, minimalism, and user impact.
@@ -103,7 +110,7 @@ const About = () => {
 
         {/* --- 2. Technical Toolkit --- */}
         <div>
-          <h3 className="font-serif text-2xl font-bold mb-8 text-black">Technical Toolkit</h3>
+          <h3 className="font-serif text-2xl font-bold mb-8 text-black">My Technical Toolkit</h3>
           <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-6">
             {skills.map((skill) => (
               <div key={skill.name} className="flex flex-col items-center justify-center p-4 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md hover:-translate-y-1 transition-all">
@@ -123,7 +130,7 @@ const About = () => {
             Certifications & Awards
           </h3>
           
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-6 mb-8">
             {certificates.map((cert) => (
               <div key={cert.id} className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:border-indigo-200 hover:shadow-lg transition-all flex flex-col justify-between h-full">
                 <div>
@@ -150,6 +157,22 @@ const About = () => {
                 </a>
               </div>
             ))}
+          </div>
+
+          {/* --- NEW LINKEDIN FOOTER --- */}
+          <div className="text-center">
+            <p className="text-gray-500 font-sans text-sm">
+              More certificates can be found on my{' '}
+              <a 
+                href="https://www.linkedin.com/in/mdharizjasni" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-indigo-600 font-bold hover:underline"
+              >
+                LinkedIn
+              </a>
+              .
+            </p>
           </div>
         </div>
 
