@@ -8,7 +8,7 @@ export const projects = [
     title: "AR Business Card with Logo",
     description: "A Business Card which can project objects in augmented reality when pointed at with a camera.",
     image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=800&auto=format&fit=crop", 
-    category: "AR/VR",
+    category: "Immersive Technologies",
     // Add extra photos here
     gallery: [
       "https://images.unsplash.com/photo-1626379953822-baec19c3accd?q=80&w=800&auto=format&fit=crop",
@@ -19,10 +19,10 @@ export const projects = [
     id: 2,
     title: "Cypher's Chamber Escape Room",
     description: "An Escape Room designed from scratch in Unity.",
-    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800&auto=format&fit=crop",
-    category: "Game Dev",
+    image: `${process.env.PUBLIC_URL}/images/VR Escape Room/Screenshot 2025-12-12 102904.png`,
+    category: "Immersive Technologies",
     gallery: [
-      `${process.env.PUBLIC_URL}portfolio/public/images/VR Escape Room`,
+      `${process.env.PUBLIC_URL}portfolio/public/images/VR Escape Room/Screenshot 2025-12-12 102904.png`,
     ]
   },
   {
@@ -56,15 +56,15 @@ export const projects = [
   },
   {
     id: 5,
-    title: "Personal Portfolio V1",
-    description: "My first attempt at a personal website using HTML and CSS.",
+    title: "The Hariz Portfolio",
+    description: "My first attempt at a portfolio website using HTML and CSS.",
     image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=800&auto=format&fit=crop",
-    category: "Web Dev",
+    category: "Web Development",
     gallery: []
   }
 ];
 
-const categories = ['All', 'AR/VR', 'Game Dev', 'Design', 'Web Dev'];
+const categories = ['All', 'Immersive Technologies', 'Mobile Development', 'Design', 'Web Development'];
 
 const Portfolio = () => {
   const [activeTab, setActiveTab] = useState('All');
