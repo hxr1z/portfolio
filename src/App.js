@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { Menu, X, Linkedin, Mail } from 'lucide-react'; 
 
 // --- Components ---
@@ -9,61 +9,36 @@ import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
 import ProjectDetail from './pages/ProjectDetail';
 
-// --- Navbar (Only for the Main Page) ---
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+  const location = useLocation();
 
-  // Scroll Spy to highlight active section
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = ['home', 'about', 'portfolio', 'contact'];
-      // Add a safe check for the element existence
-      const scrollPosition = window.scrollY + 100;
-
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element && element.offsetTop <= scrollPosition && (element.offsetTop + element.offsetHeight) > scrollPosition) {
-          setActiveSection(section);
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      window.scrollTo({
-        top: element.offsetTop - 80,
-        behavior: 'smooth'
-      });
-    }
-    setIsMobileMenuOpen(false);
-  };
+  const navLinks = [
+    { name: 'Home', path: '/' },
+    { name: 'About', path: '/about' },
+    { name: 'Portfolio', path: '/portfolio' },
+    { name: 'Contact', path: '/contact' },
+  ];
 
   return (
-    <nav className="fixed w-full z-50 bg-[#F9F9F9]/90 backdrop-blur-md py-4 border-b border-gray-200 transition-all duration-300">
+    <nav className="fixed w-full z-50 bg-[#F9F9F9]/95 backdrop-blur-md py-4 border-b border-gray-200 transition-all duration-300">
       <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
-        {/* Logo */}
-        <button onClick={() => scrollToSection('home')} className="text-xl font-serif font-bold tracking-tight text-black">
+        <Link to="/" className="text-xl font-serif font-bold tracking-tight text-black">
           TheHarizPortfolio
-        </button>
+        </Link>
 
         {/* Desktop Links */}
         <div className="hidden md:flex space-x-8 text-xs font-bold tracking-widest uppercase text-gray-400">
-          {['Home', 'About', 'Portfolio', 'Contact'].map((item) => {
-            const id = item.toLowerCase();
+          {navLinks.map((item) => {
+            const isActive = location.pathname === item.path;
             return (
-              <button 
-                key={item} 
-                onClick={() => scrollToSection(id)}
-                className={`hover:text-black transition-colors duration-300 ${activeSection === id ? 'text-black' : ''}`}
+              <Link 
+                key={item.name} 
+                to={item.path}
+                className={`hover:text-indigo-600 transition-colors duration-300 ${isActive ? 'text-indigo-600' : ''}`}
               >
-                {item}
-              </button>
+                {item.name}
+              </Link>
             );
           })}
         </div>
@@ -77,14 +52,15 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 bg-[#F9F9F9] z-40 flex flex-col items-center justify-center space-y-8 md:hidden">
-          {['Home', 'About', 'Portfolio', 'Contact'].map((item) => (
-            <button 
-              key={item}
-              onClick={() => scrollToSection(item.toLowerCase())}
-              className="text-3xl font-serif text-black hover:text-gray-500"
+          {navLinks.map((item) => (
+            <Link 
+              key={item.name}
+              to={item.path}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="text-3xl font-serif text-black hover:text-indigo-600"
             >
-              {item}
-            </button>
+              {item.name}
+            </Link>
           ))}
         </div>
       )}
@@ -92,37 +68,9 @@ const Navbar = () => {
   );
 };
 
-// --- Main Layout Component (The Single Page) ---
-const MainLayout = () => {
-  return (
-    <div className="bg-[#F9F9F9] text-black font-sans selection:bg-indigo-100 selection:text-indigo-900">
-      <Navbar />
-      <main>
-        <div id="home"><Home /></div>
-        <div id="about"><About /></div>
-        <div id="portfolio"><Portfolio /></div>
-        <div id="contact"><Contact /></div>
-      </main>
-      
-      <footer className="bg-[#F9F9F9] text-black py-12 text-center border-t border-gray-200">
-        <div className="max-w-4xl mx-auto flex flex-col items-center gap-4">
-          <h3 className="font-serif text-2xl font-bold">TheHarizPortfolio</h3>
-          <div className="flex gap-4 text-gray-600">
-             <Mail className="w-5 h-5 cursor-pointer hover:text-indigo-600 transition-colors" />
-             <Linkedin className="w-5 h-5 cursor-pointer hover:text-indigo-600 transition-colors" />
-          </div>
-          <p className="text-[10px] tracking-widest uppercase text-gray-400 mt-4">&copy; 2025 Hariz Jasni. All Rights Reserved.</p>
-        </div>
-      </footer>
-    </div>
-  );
-};
-
-// --- Root App Component ---
 const App = () => {
-  // Inject Fonts and Tailwind
   useEffect(() => {
-    // 1. Tailwind
+    // Inject Fonts and Tailwind
     if (!document.querySelector('script[src*="tailwindcss"]')) {
       const script = document.createElement('script');
       script.src = "https://cdn.tailwindcss.com";
@@ -130,13 +78,11 @@ const App = () => {
       document.head.appendChild(script);
     }
 
-    // 2. Google Fonts
     const link = document.createElement('link');
     link.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap";
     link.rel = "stylesheet";
     document.head.appendChild(link);
 
-    // 3. Custom Styles
     const style = document.createElement('style');
     style.innerHTML = `
       .font-serif { font-family: 'Playfair Display', serif; }
@@ -147,10 +93,30 @@ const App = () => {
 
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<MainLayout />} />
-        <Route path="/portfolio/:id" element={<ProjectDetail />} />
-      </Routes>
+      <div className="min-h-screen bg-[#F9F9F9] text-black font-sans selection:bg-indigo-100 selection:text-indigo-900 flex flex-col">
+        <Navbar />
+        
+        <main className="flex-grow pt-20">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/portfolio/:id" element={<ProjectDetail />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </main>
+        
+        <footer className="bg-[#F9F9F9] text-black py-12 text-center border-t border-gray-200 mt-auto">
+          <div className="max-w-4xl mx-auto flex flex-col items-center gap-4">
+            <h3 className="font-serif text-2xl font-bold">TheHarizPortfolio</h3>
+            <div className="flex gap-4 text-gray-600">
+               <Mail className="w-5 h-5 cursor-pointer hover:text-indigo-600 transition-colors" />
+               <Linkedin className="w-5 h-5 cursor-pointer hover:text-indigo-600 transition-colors" />
+            </div>
+            <p className="text-[10px] tracking-widest uppercase text-gray-400 mt-4">&copy; 2025 Hariz Jasni. All Rights Reserved.</p>
+          </div>
+        </footer>
+      </div>
     </Router>
   );
 };
