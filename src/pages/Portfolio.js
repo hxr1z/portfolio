@@ -1,12 +1,23 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-// Data with Categories AND Gallery Images
 export const projects = [
+  {
+    id: 7,
+    title: "Travel List App",
+    description: "A Business Card which can project objects in augmented reality when pointed at with a camera.",
+    image: `${process.env.PUBLIC_URL}`, 
+    category: "Web Development",
+    gallery: [
+      `${process.env.PUBLIC_URL}`,
+      `${process.env.PUBLIC_URL}`,
+      `${process.env.PUBLIC_URL}`,
+    ]
+  },
   {
     id: 6,
     title: "Task List Manager App",
-    description: "A Business Card which can project objects in augmented reality when pointed at with a camera.",
+    description: "A React Native prototype mobile application that allows you to keep track of tasks and indicate their completion status, while providing a summary of unfinished and completed tasks.",
     image: `${process.env.PUBLIC_URL}`, 
     category: "Mobile Development",
     gallery: [
