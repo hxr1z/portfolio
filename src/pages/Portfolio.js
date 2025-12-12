@@ -1,42 +1,66 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-// Data with Categories
+// Data with Categories AND Gallery Images
 export const projects = [
   {
     id: 1,
     title: "AR Business Card with Logo",
     description: "A Business Card which can project objects in augmented reality when pointed at with a camera.",
     image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=800&auto=format&fit=crop", 
-    category: "AR/VR"
+    category: "AR/VR",
+    // Add extra photos here
+    gallery: [
+      "https://images.unsplash.com/photo-1626379953822-baec19c3accd?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop"
+    ]
   },
   {
     id: 2,
     title: "Cypher's Chamber Escape Room",
     description: "An Escape Room designed from scratch in Unity.",
     image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800&auto=format&fit=crop",
-    category: "Game Dev"
+    category: "Game Dev",
+    gallery: [
+      `${process.env.PUBLIC_URL}portfolio/public/images/VR Escape Room`,
+    ]
   },
   {
     id: 3,
-    title: "CCA EXCO Windbreaker Design",
+    title: "Swiss Show Choir EXCO Windbreaker Design",
     description: "Apparel design fully led by me to create a windbreaker for the Swiss Club Executive Committee.",
-    image: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=800&auto=format&fit=crop",
-    category: "Design"
+    image: `${process.env.PUBLIC_URL}/images/CCA Windbreaker/Jacket_Black.JPEG`,
+    category: "Design",
+    gallery: [
+      `${process.env.PUBLIC_URL}/images/CCA Windbreaker/1.jpg`,
+      `${process.env.PUBLIC_URL}/images/CCA Windbreaker/2.jpg`,
+      `${process.env.PUBLIC_URL}/images/CCA Windbreaker/3.jpg`,
+      `${process.env.PUBLIC_URL}/images/CCA Windbreaker/4.jpg`,
+      `${process.env.PUBLIC_URL}/images/CCA Windbreaker/5.jpg`,
+      `${process.env.PUBLIC_URL}/images/CCA Windbreaker/6.jpg`,
+      `${process.env.PUBLIC_URL}/images/CCA Windbreaker/7.jpg`,
+      `${process.env.PUBLIC_URL}/images/CCA Windbreaker/8.jpg`,
+      `${process.env.PUBLIC_URL}/images/CCA Windbreaker/9.jpg`,
+      `${process.env.PUBLIC_URL}/images/CCA Windbreaker/10.jpg`,
+      `${process.env.PUBLIC_URL}/images/CCA Windbreaker/11.jpg`,
+      `${process.env.PUBLIC_URL}/images/CCA Windbreaker/Jacket_White.JPEG`, 
+    ]
   },
   {
     id: 4,
     title: "Swiss Blue Whales Banner Design",
     description: "The Swiss Blue House banner that I contributed to creating.",
     image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=800&auto=format&fit=crop",
-    category: "Design"
+    category: "Design",
+    gallery: []
   },
   {
     id: 5,
     title: "Personal Portfolio V1",
     description: "My first attempt at a personal website using HTML and CSS.",
     image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=800&auto=format&fit=crop",
-    category: "Web Dev"
+    category: "Web Dev",
+    gallery: []
   }
 ];
 
@@ -116,7 +140,7 @@ const Portfolio = () => {
         ))}
       </div>
 
-      {/* Empty State if no projects found */}
+      {/* Empty State */}
       {filteredProjects.length === 0 && (
         <div className="text-center py-20 text-gray-400">
           <p>No projects found in this category.</p>
