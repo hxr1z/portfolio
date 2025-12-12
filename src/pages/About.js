@@ -11,7 +11,6 @@ const skills = [
   { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg' },
   { name: 'Photoshop', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/photoshop/photoshop-original.svg' },
   { name: 'Illustrator', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/illustrator/illustrator-original.svg' },
-  // Using reliable CDN links for these two
   { name: 'Power BI', icon: 'https://cdn.worldvectorlogo.com/logos/power-bi-1.svg' },
   { name: 'Tableau', icon: 'https://cdn.worldvectorlogo.com/logos/tableau-software.svg' },
   { name: 'Unity', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/unity/unity-original.svg' },
@@ -65,7 +64,7 @@ const About = () => {
         </div>
         
         <a 
-          href="/resume.pdf" 
+          href="/DDDD_Resume_Hariz_2025.pdf" 
           download 
           className="mt-6 md:mt-0 inline-flex items-center gap-3 px-6 py-3 bg-black text-white text-xs font-bold tracking-widest uppercase hover:bg-indigo-600 transition-colors rounded-sm"
         >
