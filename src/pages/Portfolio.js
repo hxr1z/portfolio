@@ -74,15 +74,22 @@ export const projects = [
     id: 4,
     title: "Swiss Blue Whales Banner Design",
     description: "The Swiss Blue House banner that I contributed to creating.",
-    image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=800&auto=format&fit=crop",
+    image: `${process.env.PUBLIC_URL}/images/BlueHouse/b1.jpg`,
     category: "Design",
-    gallery: []
+    gallery: [
+      `${process.env.PUBLIC_URL}/images/BlueHouse/b2.jpg`,
+      `${process.env.PUBLIC_URL}/images/BlueHouse/b3.jpg`,
+      `${process.env.PUBLIC_URL}/images/BlueHouse/b4.jpg`,
+      `${process.env.PUBLIC_URL}/images/BlueHouse/b5.jpg`,
+      `${process.env.PUBLIC_URL}/images/BlueHouse/b6.jpg`,
+      `${process.env.PUBLIC_URL}/images/BlueHouse/b7.jpg`,
+    ]
   },
   {
     id: 5,
     title: "The Hariz Portfolio",
     description: "My first attempt at a portfolio website using HTML and CSS.",
-    image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=800&auto=format&fit=crop",
+    image: ``,
     category: "Web Development",
     gallery: []
   }
