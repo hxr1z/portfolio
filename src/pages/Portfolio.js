@@ -46,7 +46,7 @@ export const projects = [
     image: `${process.env.PUBLIC_URL}/images/VR Escape Room/Screenshot 2025-12-12 102904.png`,
     category: "Immersive Technologies",
     gallery: [
-      `${process.env.PUBLIC_URL}portfolio/public/images/VR Escape Room/Screenshot 2025-12-12 102904.png`,
+      `${process.env.PUBLIC_URL}/images/VR Escape Room/Screenshot 2025-12-12 102904.png`,
     ]
   },
   {
