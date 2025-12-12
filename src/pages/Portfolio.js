@@ -52,7 +52,7 @@ export const projects = [
   {
     id: 3,
     title: "Swiss Show Choir EXCO Windbreaker Design",
-    description: "Apparel design fully led by me to create a windbreaker for the Swiss Club Executive Committee.",
+    description: "Apparel design fully led by me to create a windbreaker for the Swiss Show Choir Executive Committee.",
     image: `${process.env.PUBLIC_URL}/images/CCA Windbreaker/Jacket_Black.JPEG`,
     category: "Design",
     gallery: [
