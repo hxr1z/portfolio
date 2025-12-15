@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, ChevronLeft, ChevronRight } from 'lucide-react';
-import { projects } from './Portfolio'; 
+import { projects } from '../data/projects';
 
 const ProjectDetail = () => {
   const { id } = useParams();

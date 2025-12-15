@@ -1,6 +1,6 @@
 import React from 'react';
 import { Download, Award, ExternalLink } from 'lucide-react';
-import { certificates } from './data/certificates';
+import { certificates } from '../data/certificates';
 
 // --- Data ---
 const skills = [
