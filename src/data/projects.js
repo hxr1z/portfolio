@@ -36,9 +36,9 @@ export const projects = [
   },
     {
     id: 8,
-    title: "Study Buddy Assignement Tracker",
-    description: "A Business Card which can project objects in augmented reality when pointed at with a camera.",
-    image: `${process.env.PUBLIC_URL}`,
+    title: "Study Buddy Assignment Tracker",
+    description: "A collaborative web application designed to help students organize their academic life. It features a dashboard for tracking assignments and a dedicated module for managing school subjects.",
+    image: `${process.env.PUBLIC_URL}`, // Don't forget to add your image path later!
     category: "Web Development",
     gallery: [
       `${process.env.PUBLIC_URL}`,
@@ -48,19 +48,36 @@ export const projects = [
     sections: [
       {
         title: "Technologies Used",
-        content: "React, CSS, LocalStorage, Netlify"
+        content: "HTML, CSS, Node.js, MySQL (via MySQLWorkbench), filess.io (Database Hosting), VS Code"
       },
       {
         title: "Features",
         content: [
-          "Users can add items to their packing list.",
-          "Items are saved in local storage so they don't disappear on refresh.",
-          "Sorting feature to organize items by packed status or description."
+          "Subject Management System: A CRUD-based feature allowing students to add, edit, and delete the subjects they are currently taking.",
+          "Dynamic Forms: Custom-built forms that interface directly with the MySQL database to update user records in real-time.",
+          "Centralized Dashboard: A visually unified main hub (designed by me) that provides users with an immediate overview of their academic status.",
+          "Secure Login Interface: A clean, user-friendly entry point for the application."
         ]
       },
       {
+        title: "Role in the Project",
+        content: "I worked in a team of 5 (with Shem, Justin, Chih Hsuan, and Dini). My primary responsibility was the full-stack development of the 'Subjects' page, ensuring users could manage their subject lists. Additionally, I took the lead on designing the UI for the common areas, including the Main Dashboard and Login Page, to ensure a consistent look and feel across the app."
+      },
+      {
         title: "Challenges Faced",
-        content: "The biggest challenge was managing the state between the form and the list display. I had to learn how to lift state up to the parent component."
+        content: "The biggest challenge was integration. Since each team member developed their own feature (Subjects, Assignments, etc.) separately, combining them into one cohesive Node.js project required careful coordination. We had to ensure our database schemas on filess.io matched perfectly and that our CSS styles didn't conflict when merged."
+      },
+      {
+        title: "Learning Outcomes",
+        content: [
+          "Mastered the implementation of CRUD operations (Create, Read, Update, Delete) using Node.js and MySQL.",
+          "Learned how to connect a local application to a remote cloud database (filess.io).",
+          "Gained experience in 'Modular Development'—building a small part of a larger system and integrating it with others."
+        ]
+      },
+      {
+        title: "Future Improvements",
+        content: "If we had more time, I would implement a 'Due Date Reminder' system that automatically emails students when an assignment for a specific subject is approaching."
       }
     ]
   },
