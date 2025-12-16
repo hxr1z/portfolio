@@ -24,3 +24,79 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+/* --- DARK BLUE (MIDNIGHT) OVERRIDES --- */
+
+:root {
+  /* The Midnight Palette */
+  --navy-50:  #F0F5FA;  /* Very light blue-grey (backgrounds) */
+  --navy-100: #E1E8F0;  /* Light borders */
+  --navy-200: #CBD5E1;
+  
+  --navy-main: #1E3A8A; /* Deep Blue (Main Buttons/Text) */
+  --navy-dark: #172554; /* Very Dark Blue (Hover States) */
+  --navy-accent: #3B82F6; /* Brighter Blue (Focus rings/Highlights) */
+}
+
+/* 1. Backgrounds */
+.bg-indigo-600 {
+  background-color: var(--navy-main) !important;
+}
+.bg-indigo-50 {
+  background-color: var(--navy-50) !important;
+}
+
+/* 2. Text Colors */
+.text-indigo-600, 
+.text-indigo-500,
+.text-indigo-700 { 
+  color: var(--navy-main) !important;
+}
+
+/* 3. Borders */
+.border-indigo-600 {
+  border-color: var(--navy-main) !important;
+}
+.border-indigo-200 {
+  border-color: var(--navy-100) !important;
+}
+
+/* 4. SHADOWS (Re-tinting the glow to blue) */
+.shadow-indigo-200 {
+  --tw-shadow-color: #BFDBFE !important; 
+  box-shadow: 0 4px 6px -1px #BFDBFE, 0 2px 4px -1px #BFDBFE !important;
+}
+.shadow-indigo-100 {
+  --tw-shadow-color: #DBEAFE !important;
+  box-shadow: 0 10px 15px -3px #DBEAFE, 0 4px 6px -2px #DBEAFE !important;
+}
+
+/* --- FIXING THE HOVERS --- */
+
+/* Standard Button Hovers */
+.hover\:bg-indigo-600:hover {
+  background-color: var(--navy-dark) !important;
+}
+
+/* Text Links Hovers */
+.hover\:text-indigo-600:hover,
+.hover\:text-indigo-800:hover,
+.hover\:text-indigo-500:hover {
+  color: var(--navy-dark) !important;
+}
+
+/* Border Hovers */
+.hover\:border-indigo-600:hover,
+.hover\:border-indigo-300:hover {
+  border-color: var(--navy-main) !important;
+}
+
+/* Group Hovers (Crucial for your Portfolio Cards!) */
+/* This forces the title to turn Dark Blue when you hover the card */
+.group:hover .group-hover\:text-indigo-700 {
+  color: var(--navy-main) !important;
+}
+.group:hover .group-hover\:scale-105 {
+  /* This ensures the image zoom still works smoothly */
+  transform: scale(1.05);
+}

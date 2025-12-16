@@ -87,27 +87,42 @@ export const projects = [
     ]
   },
   {
-    id: 7,
-    title: "Travel List App",
-    description: "A Business Card which can project objects in augmented reality when pointed at with a camera.",
-    image: `${process.env.PUBLIC_URL}`, 
-    category: "Web Development",
-    gallery: [
-      `${process.env.PUBLIC_URL}`,
-      `${process.env.PUBLIC_URL}`,
-      `${process.env.PUBLIC_URL}`,
-    ]
-  },
-  {
     id: 6,
     title: "Task List Manager App",
-    description: "A React Native app that allows you to keep track of tasks and indicate their completion status, while providing a summary of unfinished and completed tasks.",
-    image: `${process.env.PUBLIC_URL}`,
+    description: "A functional mobile app prototype built with React Native. Created for a simulated internship assessment, it demonstrates core mobile development concepts including list rendering, stack navigation, and data manipulation.",
+    image: `${process.env.PUBLIC_URL}/images/mobile-thumb.jpg`, // Update this path!
     category: "Mobile Development",
-    gallery: [
-      `${process.env.PUBLIC_URL}`,
-      `${process.env.PUBLIC_URL}`,
-      `${process.env.PUBLIC_URL}`,
+    gallery: [], // Add your emulator screenshots here
+    sections: [
+      {
+        title: "Technologies Used",
+        content: "React Native, Expo, React Navigation (Native Stack), JavaScript (ES6)"
+      },
+      {
+        title: "Key Features",
+        content: [
+          "Categorized Data View: Utilized `SectionList` to distinctively group tasks into 'Pending' and 'Completed' categories with color-coded headers.",
+          "CRUD Functionality: Complete implementation of Create, Read, Update, and Delete operations. Users can add new tasks, edit descriptions, change status, or remove items entirely.",
+          "Summary Analytics: Met the assignment requirement for a 'Calculation' feature by implementing a status algorithm that computes the completion percentage and displays it via a native Alert.",
+          "Persistent Navigation: Built a seamless user flow using `NativeStackNavigator`, allowing data parameters to be passed between the Home, Add, and Edit screens."
+        ]
+      },
+      {
+        title: "Project Context",
+        content: "This project was the CA1 submission for the 'Mobile App Development' module. The brief simulated an internship scenario where 'management' required a proof-of-concept app to demonstrate proficiency in React Native's ListView and navigation systems."
+      },
+      {
+        title: "Challenges Faced",
+        content: "The main logic challenge was handling state changes across different screens without a backend. Specifically, when a user changes a task from 'Pending' to 'Completed' in the Edit screen, I had to write logic to identify the item's index, remove it from the source array, and push it to the target array, ensuring the SectionList updated correctly upon returning to the Home screen."
+      },
+      {
+        title: "Learning Outcomes",
+        content: [
+          "Mastered the differences between `FlatList` and `SectionList` for rendering mobile data.",
+          "Learned how to structure a React Native codebase with separate component files for cleaner architecture.",
+          "Gained experience testing and debugging UI responsiveness using the Android Studio Emulator."
+        ]
+      }
     ]
   },
   {
@@ -143,7 +158,7 @@ export const projects = [
       },
       {
         title: "Challenges Faced",
-        content: "The main challenge was designing a business card that was aesthetically pleasing while still being 'readable' by the AR camera. Vuforia requires high-contrast 'feature points' to track an image. My initial designs were too minimalist, resulting in poor tracking. [cite_start]I overcame this by adding a textured background (the 'blue noise' effect) which boosted the tracking rating to 4 stars without ruining the visual design[cite: 447]."
+        content: "The main challenge was designing a business card that was aesthetically pleasing while still being 'readable' by the AR camera. Vuforia requires high-contrast 'feature points' to track an image. My initial designs were too minimalist, resulting in poor tracking. I overcame this by adding a textured background (the 'blue noise' effect) which boosted the tracking rating to 4 stars without ruining the visual design."
       },
       {
         title: "Learning Outcomes",
@@ -161,12 +176,42 @@ export const projects = [
   },
   {
     id: 2,
-    title: "Cypher's Chamber Escape Room",
-    description: "An Escape Room designed from scratch in Unity.",
+    title: "Cypher's Chamber (VR Escape Room)",
+    description: "A narrative-driven Virtual Reality escape room thriller built in Unity. Players are trapped in a surveillance hub and must solve a sequence of logic puzzles—interspersed with riddles—to override a rogue AI's lockdown.",
     image: `${process.env.PUBLIC_URL}/images/VR Escape Room/Screenshot 2025-12-12 102904.png`,
     category: "Immersive Technologies",
     gallery: [
       `${process.env.PUBLIC_URL}/images/VR Escape Room/Screenshot 2025-12-12 102904.png`,
+    ],
+    sections: [
+      {
+        title: "Technologies Used",
+        content: "Unity 3D, C#, XR Interaction Toolkit, ProBuilder, HTC VIVE"
+      },
+      {
+        title: "Gameplay Loop",
+        content: [
+          "Memory & Logic: Programmed a working 'Simon Says' color-sequence game and a 'Lights Out' toggle puzzle using C# scripts.",
+          "Physical Interaction: Created a 'Power Grid' fetch quest where players must physically locate and slot battery items into a receiver.",
+          "The Riddle Chain: Solving each mechanical puzzle unlocks a cryptic riddle. Players must solve all 4 riddles to deduce the final keypad code."
+        ]
+      },
+      {
+        title: "Role in the Project",
+        content: "I acted as both Solo Developer and Level Designer. My primary focus was scripting the interaction logic for the electronic puzzles. For the environment, I modeled the structural elements (walls, custom buttons) using ProBuilder and populated the room using curated assets from the Unity Store."
+      },
+      {
+        title: "Challenges Faced",
+        content: "The biggest challenge was scope management. Balancing the complex coding required for the 'Simon Says' and 'Lights Out' algorithms left less time for environmental polish. I learned that making a room feel 'lived-in' and fully furnished requires significantly more time than expected, leading me to prioritize functionality over decoration for this submission."
+      },
+      {
+        title: "Learning Outcomes",
+        content: [
+          "Learned to use ProBuilder to greybox and construct custom level geometry within Unity.",
+          "Mastered the logic arrays required to program state-based puzzles (like checking if all lights are off).",
+          "Gained experience in 'Feature Cutting'—adapting the original Game Design Document to meet the deadline."
+        ]
+      }
     ]
   },
   {
@@ -192,8 +237,8 @@ export const projects = [
   },
   {
     id: 4,
-    title: "Swiss Blue Whales Banner Design",
-    description: "The Swiss Blue House banner that I contributed to creating.",
+    title: "Swiss Blue Whales House Banner",
+    description: "A large-scale physical banner designed and handcrafted for the 'Blue Whales' house. Originally created for the Inter-House Cheer & Dance competition, it served as the primary emblem for Sports Day and school orientation events.",
     image: `${process.env.PUBLIC_URL}/images/BlueHouse/b1.jpg`,
     category: "Design",
     gallery: [
@@ -203,13 +248,36 @@ export const projects = [
       `${process.env.PUBLIC_URL}/images/BlueHouse/b5.jpg`,
       `${process.env.PUBLIC_URL}/images/BlueHouse/b6.jpg`,
       `${process.env.PUBLIC_URL}/images/BlueHouse/b7.jpg`,
+      `${process.env.PUBLIC_URL}/images/BlueHouse/b1.jpg`,
+    ],
+    sections: [
+      {
+        title: "Tools & Materials",
+        content: "Procreate (iPad for initial concepts & typography), Acrylic Paint, Large Fabric Canvas, Various Brushes & Craft Supplies."
+      },
+      {
+        title: "The Design Process",
+        content: [
+          "Digital Ideation: Started on the iPad using Procreate to quickly iterate through different compositions, color palettes, and typography treatments for the 'Blue Whales' theme.",
+          "Scaling Up: The biggest technical hurdle was translating a small digital sketch onto a massive physical banner while maintaining accurate proportions.",
+          "Physical Execution: Moving from screen to canvas, the design was hand-painted onto the banner, requiring careful layering of acrylics to achieve vibrant, opaque colors."
+        ]
+      },
+      {
+        title: "Role in the Project",
+        content: "I served as the Lead Designer and Project Lead. I was responsible for the entire creative direction—from generating the initial concepts and digital sketches to overseeing the physical painting process. While house members assisted with materials and logistics, I executed the core design work and guided the team during the final production phase."
+      },
+      {
+        title: "Challenges Faced",
+        content: "The primary challenge was project management. Executing a large-scale physical artwork requires significant time, which had to be balanced alongside academic commitments during an active school semester. It required strict time allocation to meet the event deadlines without compromising quality."
+      }
     ]
   },
   {
     id: 5,
     title: "The Hariz Portfolio",
     description: "The website you are looking at right now! A modern, responsive personal portfolio built with React.js to showcase my journey as a developer and designer.",
-    image: `${process.env.PUBLIC_URL}/images/portfolio-thumb.jpg`, // You should take a screenshot of your homepage for this!
+    image: `${process.env.PUBLIC_URL}/images/portfolio/pflio.png`, // You should take a screenshot of your homepage for this!
     category: "Web Development",
     gallery: [], // You can add screenshots of your mobile view or 'About' page here later
     sections: [
