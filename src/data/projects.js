@@ -38,12 +38,17 @@ export const projects = [
     id: 8,
     title: "Study Buddy Assignment Tracker",
     description: "A collaborative web application designed to help students organize their academic life. It features a dashboard for tracking assignments and a dedicated module for managing school subjects.",
-    image: `${process.env.PUBLIC_URL}`, // Don't forget to add your image path later!
+    image: `${process.env.PUBLIC_URL}/images/SDBD/1.png`, // Don't forget to add your image path later!
     category: "Web Development",
     gallery: [
-      `${process.env.PUBLIC_URL}`,
-      `${process.env.PUBLIC_URL}`,
-      `${process.env.PUBLIC_URL}`,
+      `${process.env.PUBLIC_URL}/images/SDBD/2.png`,
+      `${process.env.PUBLIC_URL}/images/SDBD/3.png`,
+      `${process.env.PUBLIC_URL}/images/SDBD/4.png`,
+      `${process.env.PUBLIC_URL}/images/SDBD/5.png`,
+      `${process.env.PUBLIC_URL}/images/SDBD/6.png`,
+      `${process.env.PUBLIC_URL}/images/SDBD/7.png`,
+      `${process.env.PUBLIC_URL}/images/SDBD/8.png`,
+      `${process.env.PUBLIC_URL}/images/SDBD/9.png`,
     ],
     sections: [
       {
