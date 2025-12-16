@@ -112,14 +112,51 @@ export const projects = [
   },
   {
     id: 1,
-    title: "AR Business Card with Logo",
-    description: "A Business Card which can project objects in augmented reality when pointed at with a camera.",
-    image: `${process.env.PUBLIC_URL}/images/VR Card/Screenshot 2025-12-12 111158.png`, 
+    title: "AR Business Card (Lumon Industries)",
+    description: "An interactive Augmented Reality business card inspired by the TV show 'Severance'. It utilizes image tracking technology to project a custom-modeled 3D company logo when viewed through a mobile device.",
+    image: `${process.env.PUBLIC_URL}/images/VR Card/Screenshot 2025-12-12 111158.png`, // Update with your actual image path
     category: "Immersive Technologies",
     gallery: [
       `${process.env.PUBLIC_URL}/images/VR Card/IMG_1568.png`,
       `${process.env.PUBLIC_URL}/images/VR Card/FULL JPG.jpeg`,
+      `${process.env.PUBLIC_URL}/images/VR Card/1.png`,
+      `${process.env.PUBLIC_URL}/images/VR Card/2.png`,
+      `${process.env.PUBLIC_URL}/images/VR Card/3.png`,
       `${process.env.PUBLIC_URL}/images/VR Card/Muhammad Hariz Video Submission.mp4`,
+    ],
+    sections: [
+      {
+        title: "Technologies Used",
+        content: "Unity, Vuforia Engine, Shapr3D (iPad Modeling), Canva (2D Design)"
+      },
+      {
+        title: "Features",
+        content: [
+          "Custom 3D Modeling: I personally modeled the 3D 'Lumon' water drop logo using Shapr3D on an iPad with an Apple Pencil.",
+          "High-Fidelity Image Tracking: Achieved a 4-star Vuforia rating for the target image, ensuring the 3D model appears instantly and stays locked to the card.",
+          "Thematic Design: A 'Macrodata Refinement' aesthetic inspired by the show Severance, featuring the 'Junior Refiner' title and official branding."
+        ]
+      },
+      {
+        title: "Role in the Project",
+        content: "I was the sole developer for this assignment. My role involved the full creative pipeline: designing the physical card in Canva to optimize for tracking points, modeling the 3D assets from scratch in Shapr3D, and assembling the final AR experience in Unity."
+      },
+      {
+        title: "Challenges Faced",
+        content: "The main challenge was designing a business card that was aesthetically pleasing while still being 'readable' by the AR camera. Vuforia requires high-contrast 'feature points' to track an image. My initial designs were too minimalist, resulting in poor tracking. [cite_start]I overcame this by adding a textured background (the 'blue noise' effect) which boosted the tracking rating to 4 stars without ruining the visual design[cite: 447]."
+      },
+      {
+        title: "Learning Outcomes",
+        content: [
+          "Mastered the workflow of exporting 3D models from iPad (Shapr3D) into a Unity environment.",
+          "Understood the fundamentals of AR Image Targets and feature point detection.",
+          "Gained experience in optimizing 3D assets for mobile AR performance."
+        ]
+      },
+      {
+        title: "Future Improvements",
+        content: "While the current version is purely visual, I would like to add interactivity in the future. Implementing 'Virtual Buttons' would allow users to tap the holographic email or LinkedIn icon to automatically open those links on their phone."
+      }
     ]
   },
   {
@@ -171,9 +208,44 @@ export const projects = [
   {
     id: 5,
     title: "The Hariz Portfolio",
-    description: "My first attempt at a portfolio website using HTML and CSS.",
-    image: ``,
+    description: "The website you are looking at right now! A modern, responsive personal portfolio built with React.js to showcase my journey as a developer and designer.",
+    image: `${process.env.PUBLIC_URL}/images/portfolio-thumb.jpg`, // You should take a screenshot of your homepage for this!
     category: "Web Development",
-    gallery: []
-  }
+    gallery: [], // You can add screenshots of your mobile view or 'About' page here later
+    sections: [
+      {
+        title: "Technologies Used",
+        content: "React.js, Tailwind CSS, React Router, GitHub Pages, GitHub Actions (CI/CD)"
+      },
+      {
+        title: "Features",
+        content: [
+          "Dynamic Project Routing: Built a scalable system where a single 'Project Detail' component dynamically renders content based on the URL ID.",
+          "Category Filtering: Implemented a live filtering system using React State to sort projects by category (Web, Mobile, Design, etc.).",
+          "Data-Driven Architecture: Separated content from logic by storing project data in structured JSON files, making it easy to add new projects without touching the code.",
+          "Automated Deployment: Configured a CI/CD pipeline using GitHub Actions to automatically build and deploy the site whenever code is pushed."
+        ]
+      },
+      {
+        title: "Role in the Project",
+        content: "I designed and developed this site from scratch. My goal was to move away from static HTML templates and build a component-based application that is easy to maintain and scale."
+      },
+      {
+        title: "Challenges Faced",
+        content: "One major technical hurdle was handling client-side routing on GitHub Pages. Since GitHub Pages is a static host, refreshing a sub-page (like /portfolio/1) often results in a 404 error. I had to configure the deployment workflow and use HashRouter (or specific Single Page App scripts) to ensure direct links work correctly."
+      },
+      {
+        title: "Learning Outcomes",
+        content: [
+          "Deepened understanding of React Hooks (useState, useEffect, useParams).",
+          "Learned how to set up a professional folder structure (separating Pages, Components, and Data).",
+          "Gained practical experience with Continuous Integration/Continuous Deployment (CI/CD) workflows."
+        ]
+      },
+      {
+        title: "Future Improvements",
+        content: "I plan to add a 'Dark Mode' toggle using Tailwind's dark theme capabilities and potentially integrate a headless CMS so I can update the portfolio content from a dashboard instead of editing code."
+      }
+    ]
+  },
 ];
