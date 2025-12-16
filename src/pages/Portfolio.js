@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { projects } from '../data/projects';
 
-const categories = ['All', 'Immersive Technologies', 'Mobile Development', 'Design', 'Web Development'];
+const categories = ['All', 'Immersive Technologies', 'Mobile Development', 'Web Development', 'Design', 'Multimedia'];
 
 const Portfolio = () => {
   const [activeTab, setActiveTab] = useState('All');

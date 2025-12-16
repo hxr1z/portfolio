@@ -1,11 +1,74 @@
 // src/data/projects.js
 
+// {
+//     id: ,
+//     title: "T",
+//     description: "",
+//     image: ``,
+//     category: "",
+//     gallery: [
+//         `${process.env.PUBLIC_URL}`,
+//     ],
+//     sections: [
+//       {
+//         title: "",
+//         content: ""
+//       },
+//     ]
+//   },
+
 export const projects = [
+    {
+    id: 9,
+    title: "Gamelan Naga Kencana Introduction Video",
+    description: "A ",
+    image: ``,
+    category: "Multimedia",
+    gallery: [
+        `${process.env.PUBLIC_URL}`,
+    ],
+    sections: [
+      {
+        title: "",
+        content: ""
+      },
+    ]
+  },
+    {
+    id: 8,
+    title: "Study Buddy Assignement Tracker",
+    description: "A Business Card which can project objects in augmented reality when pointed at with a camera.",
+    image: `${process.env.PUBLIC_URL}`,
+    category: "Web Development",
+    gallery: [
+      `${process.env.PUBLIC_URL}`,
+      `${process.env.PUBLIC_URL}`,
+      `${process.env.PUBLIC_URL}`,
+    ],
+    sections: [
+      {
+        title: "Technologies Used",
+        content: "React, CSS, LocalStorage, Netlify"
+      },
+      {
+        title: "Features",
+        content: [
+          "Users can add items to their packing list.",
+          "Items are saved in local storage so they don't disappear on refresh.",
+          "Sorting feature to organize items by packed status or description."
+        ]
+      },
+      {
+        title: "Challenges Faced",
+        content: "The biggest challenge was managing the state between the form and the list display. I had to learn how to lift state up to the parent component."
+      }
+    ]
+  },
   {
     id: 7,
     title: "Travel List App",
     description: "A Business Card which can project objects in augmented reality when pointed at with a camera.",
-    image: `${process.env.PUBLIC_URL}`, // You might want to update this with a real path
+    image: `${process.env.PUBLIC_URL}`, 
     category: "Web Development",
     gallery: [
       `${process.env.PUBLIC_URL}`,
@@ -17,7 +80,7 @@ export const projects = [
     id: 6,
     title: "Task List Manager App",
     description: "A React Native app that allows you to keep track of tasks and indicate their completion status, while providing a summary of unfinished and completed tasks.",
-    image: `${process.env.PUBLIC_URL}`, // Update this too
+    image: `${process.env.PUBLIC_URL}`,
     category: "Mobile Development",
     gallery: [
       `${process.env.PUBLIC_URL}`,
