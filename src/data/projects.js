@@ -242,7 +242,7 @@ export const projects = [
     sections: [
       {
         title: "Technologies Used",
-        content: "Unity, Vuforia Engine, Shapr3D (iPad Modeling), Canva (2D Design)h"
+        content: "Unity, Vuforia Engine, Shapr3D (iPad Modeling), Canva (2D Design)"
       },
       {
         title: "Features",
