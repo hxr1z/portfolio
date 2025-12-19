@@ -1,8 +1,9 @@
 import React from 'react';
-import { Download, Award, ExternalLink } from 'lucide-react';
+import { Download, Award, ExternalLink, Star, Users } from 'lucide-react';
 import { certificates } from '../data/certificates';
+import { ccaRecords } from '../data/cca';
 
-// --- Data ---
+// --- Data (Skills) ---
 const skills = [
   { name: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg' },
   { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg' },
@@ -18,10 +19,51 @@ const skills = [
 ];
 
 const About = () => {
+
+  // --- REUSABLE TILE COMPONENT (Clean Version) ---
+  const DocumentCard = ({ item, icon: Icon, colorClass, linkText }) => (
+    <div className="bg-white p-8 rounded-xl border border-gray-200 shadow-sm hover:border-indigo-200 hover:shadow-lg transition-all flex flex-col justify-between h-full">
+      <div>
+        <div className="flex justify-between items-start mb-6">
+          <span className={`text-xs font-bold tracking-widest uppercase px-3 py-1 rounded ${colorClass} bg-opacity-10 text-opacity-100`}>
+            {item.date}
+          </span>
+          {Icon && <Icon size={24} className="text-gray-300" />}
+        </div>
+        
+        <h4 className="font-serif text-xl font-bold text-gray-900 mb-2">
+          {item.title}
+        </h4>
+        
+        <p className="text-xs text-gray-500 uppercase tracking-wide mb-6">
+          {item.organization || item.issuer}
+        </p>
+
+        {item.description && (
+          // Full text display (No line-clamp)
+          <p className="text-gray-600 text-sm leading-relaxed mb-8">
+            {item.description}
+          </p>
+        )}
+      </div>
+
+      <div className="mt-auto pt-6 border-t border-gray-50">
+        <a 
+          href={item.pdf} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-indigo-600 transition-colors"
+        >
+          {linkText} <ExternalLink size={14} />
+        </a>
+      </div>
+    </div>
+  );
+
   return (
-    <section className="py-12 px-6 md:px-12 max-w-5xl mx-auto">
+    <section className="py-12 px-6 md:px-12 max-w-6xl mx-auto">
       
-      {/* --- Header & Resume Button --- */}
+      {/* --- Header & Resume --- */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 border-b border-gray-200 pb-8">
         <div>
           <h2 className="font-serif text-5xl md:text-6xl text-black mb-4 relative inline-block">
@@ -33,7 +75,6 @@ const About = () => {
           </p>
         </div>
         
-        {/* FIXED: Using process.env.PUBLIC_URL for the resume download */}
         <a 
           href={`${process.env.PUBLIC_URL}/DDDD_Resume_Hariz_2025.pdf`}
           download 
@@ -44,7 +85,7 @@ const About = () => {
         </a>
       </div>
 
-      <div className="space-y-20">
+      <div className="space-y-24">
         
         {/* --- 1. Bio Section --- */}
         <div className="font-sans text-lg leading-relaxed text-gray-600 max-w-3xl">
@@ -71,43 +112,45 @@ const About = () => {
           </div>
         </div>
 
-        {/* --- 3. Certifications & Awards (Cards) --- */}
+        {/* --- 3. Co-Curricular & Leadership --- */}
+        <div>
+          <h3 className="font-serif text-2xl font-bold mb-8 flex items-center gap-2 text-black">
+            <Users className="text-orange-600" size={28} />
+            Co-Curricular & Leadership
+          </h3>
+          {/* Using 2 Columns (md:grid-cols-2) to ensure text fits comfortably */}
+          <div className="grid md:grid-cols-2 gap-8">
+             {ccaRecords && ccaRecords.map((item) => (
+               <DocumentCard 
+                  key={item.id} 
+                  item={item} 
+                  icon={Star} 
+                  colorClass="text-orange-600 bg-orange-50"
+                  linkText="View Record"
+               />
+             ))}
+          </div>
+        </div>
+
+        {/* --- 4. Certifications --- */}
         <div>
           <h3 className="font-serif text-2xl font-bold mb-8 flex items-center gap-2 text-black">
             <Award className="text-indigo-600" size={28} />
             Certifications & Awards
           </h3>
           
-          <div className="grid md:grid-cols-2 gap-6 mb-8">
+          <div className="grid md:grid-cols-2 gap-8 mb-8">
             {certificates.map((cert) => (
-              <div key={cert.id} className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:border-indigo-200 hover:shadow-lg transition-all flex flex-col justify-between h-full">
-                <div>
-                  <div className="flex justify-between items-start mb-4">
-                    <span className="text-xs font-bold text-indigo-500 tracking-widest uppercase bg-indigo-50 px-2 py-1 rounded">
-                      {cert.date}
-                    </span>
-                  </div>
-                  <h4 className="font-serif text-xl font-bold text-gray-900 mb-1">
-                    {cert.title}
-                  </h4>
-                  <p className="text-sm text-gray-500 uppercase tracking-wide mb-6">
-                    {cert.issuer}
-                  </p>
-                </div>
-
-                <a 
-                  href={cert.pdf} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-indigo-600 transition-colors self-start mt-auto"
-                >
-                  View Certificate <ExternalLink size={14} />
-                </a>
-              </div>
+              <DocumentCard 
+                key={cert.id} 
+                item={cert} 
+                icon={Award} 
+                colorClass="text-indigo-600 bg-indigo-50" 
+                linkText="View Certificate"
+              />
             ))}
           </div>
 
-          {/* --- NEW LINKEDIN FOOTER --- */}
           <div className="text-center">
             <p className="text-gray-500 font-sans text-sm">
               More certificates can be found on my{' '}
@@ -118,8 +161,7 @@ const About = () => {
                 className="text-indigo-600 font-bold hover:underline"
               >
                 LinkedIn
-              </a>
-              .
+              </a>.
             </p>
           </div>
         </div>

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, ChevronLeft, ChevronRight } from 'lucide-react';
-// Corrected Import Path
+import { ArrowLeft, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
 import { projects } from '../data/projects';
 
 const ProjectDetail = () => {
@@ -72,13 +71,34 @@ const ProjectDetail = () => {
           </div>
         )}
         
-        {/* --- Content Body (The New Part) --- */}
+        {/* --- Content Body --- */}
         <div className="max-w-4xl mx-auto mb-20">
           
           {/* 1. Main Description (Intro) */}
           <p className="text-2xl font-light leading-relaxed text-gray-700 mb-12">
             {project.description}
           </p>
+
+          {/* --- NEW LIVE LINK SECTION --- */}
+          {project.link && (
+            <div className="mb-12 bg-indigo-50 p-6 rounded-xl border border-indigo-100 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+              <div>
+                <h3 className="font-bold text-lg text-indigo-900 m-0">Live Demo Available</h3>
+                <p className="text-indigo-700 text-sm m-0 mt-1">
+                  You can test the full functionality of this app directly in your browser.
+                </p>
+              </div>
+              <a 
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700 transition-colors shadow-md hover:shadow-lg whitespace-nowrap no-underline"
+              >
+                Launch App <ExternalLink size={18} />
+              </a>
+            </div>
+          )}
+          {/* ----------------------------- */}
 
           {/* 2. Dynamic Sections (Technologies, Features, Challenges, etc.) */}
           {project.sections && project.sections.map((section, index) => (

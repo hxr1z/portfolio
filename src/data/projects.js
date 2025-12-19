@@ -18,20 +18,67 @@
 //   },
 
 export const projects = [
-    {
-    id: 9,
-    title: "Gamelan Naga Kencana Introduction Video",
-    description: "A ",
-    image: ``,
+  {
+    id: 10,
+    title: "Mediacorp Hari Raya Greeting",
+    description: "A festive promotional video produced in collaboration with Mediacorp. I directed and edited this 'Selamat Hari Raya' greeting featuring members of the Gamelan Naga Kencana ensemble, creating a warm, community-focused message for the holiday season.",
+    // TAKE A SCREENSHOT OF THE VIDEO FOR THIS THUMBNAIL
+    image: `${process.env.PUBLIC_URL}/images/hariraya/1.png`, 
     category: "Multimedia",
     gallery: [
-        `${process.env.PUBLIC_URL}`,
+      // RENAME YOUR VIDEO FILE TO THIS:
+      `${process.env.PUBLIC_URL}/images/hariraya/Hari Raya final.mp4`,
     ],
     sections: [
       {
-        title: "",
-        content: ""
+        title: "Tools Used",
+        content: "CapCut (Editing & Color Grading), on-set Direction"
       },
+      {
+        title: "Production Highlights",
+        content: [
+          "Directing Talent: Coordinated a group of performers (Gamelan members), guiding their positioning, energy, and delivery to ensure the greeting felt natural and enthusiastic.",
+          "Brand Alignment: Produced content that aligned with the festive tone required by the collaboration brief.",
+          "Post-Production: Edited the footage in CapCut, adding festive overlays and ensuring the audio levels were balanced for a clean final output."
+        ]
+      },
+      {
+        title: "Role in the Project",
+        content: "I was the Solo Producer for this segment. I handled the entire workflow: from setting up the camera and directing the cast on location to the final edit and delivery."
+      }
+    ]
+  },
+    {
+    id: 9,
+    title: "Gamelan Naga Kencana (Open House Trailer)",
+    description: "A high-energy cinematic trailer produced for Republic Polytechnic's Open House 2025. This promotional video was designed to attract new members by reimagining the traditional Gamelan ensemble through the lens of a modern movie trailer.",
+    // TAKE A SCREENSHOT OF YOUR VIDEO AND SAVE IT AS 'thumbnail.jpg'
+    image: `${process.env.PUBLIC_URL}/images/gamelan promo/1.png`,
+    category: "Multimedia",
+    gallery: [
+      `${process.env.PUBLIC_URL}/images/gamelan promo/Promo Video (GNK)(1).mp4`,
+    ],
+    sections: [
+      {
+        title: "Tools Used",
+        content: "CapCut (Desktop/Mobile), Voiceover Recording, Archival Footage Management"
+      },
+      {
+        title: "Creative Direction",
+        content: [
+          "Cinematic Approach: Deliberately chose 'Movie Trailer' style music instead of traditional Gamelan tracks to create hype and tension, appealing to a modern student audience.",
+          "Archival Montage: Curated and stitched together high-impact clips from past performances to showcase the ensemble's legacy.",
+          "Voiceover Coordination: Directed and coordinated peers to record voiceover lines, ensuring the narrative flow matched the rising intensity of the background track."
+        ]
+      },
+      {
+        title: "Role in the Project",
+        content: "I served as the Video Editor and Creative Lead. My role involved sourcing archival footage, selecting the soundtrack, syncing the visuals to the beat for maximum impact, and mixing the voiceovers to ensure clarity against the loud orchestral score."
+      },
+      {
+        title: "Challenges Faced",
+        content: "The main challenge was working with footage from different years and cameras. Some clips were lower quality or had different lighting. I had to color grade and fast-cut the footage in CapCut to make the visual style feel consistent and intentional, hiding imperfections through pacing."
+      }
     ]
   },
     {
@@ -87,12 +134,65 @@ export const projects = [
     ]
   },
   {
+    id: 7,
+    title: "Travel Packing List",
+    description: "A React-based utility app designed to help travelers organize their luggage. It features dynamic state management to track items, toggle their packed status, and calculate packing progress in real-time.",
+    // ADDED YOUR LIVE LINK HERE:
+    link: "https://hxr1z.github.io/travel-list-app-hariz/",
+    image: `${process.env.PUBLIC_URL}/images/travellist/travellist.png`, 
+    category: "Web Development",
+    gallery: [],
+    sections: [
+      {
+        title: "Technologies Used",
+        content: "React.js (Hooks: useState), CSS, JavaScript (ES6), GitHub Pages"
+      },
+      {
+        title: "Key Features",
+        content: [
+          "Dynamic Form Input: Users can add travel essentials with specific quantities and descriptions using a controlled form component.",
+          "Interactive Checklist: Items can be toggled as 'Packed' or 'Unpacked' and deleted individually, with the UI updating instantly.",
+          "Live Progress Tracking: A 'Stats' footer component that dynamically calculates the total number of items and the percentage currently packed.",
+          "Component Architecture: Built using a modular structure (Form, PackingList, Item, Stats) to ensure clean data flow via props."
+        ]
+      },
+      {
+        title: "Project Context",
+        content: "This application was developed to demonstrate proficiency in React fundamentals. The core objective was to manage 'State' effectively across parent and child components, ensuring that data (like the list of items) could be shared between the input form and the display list."
+      },
+      {
+        title: "Challenges Faced",
+        content: "The main technical challenge was 'Lifting State Up'. I had to ensure that the array of items, which is needed by the PackingList (to display) and the Stats (to calculate), was held in the parent App component, while the controls to *add* those items lived in a separate child Form component."
+      },
+      {
+        title: "Learning Outcomes",
+        content: [
+          "Mastered the use of the `useState` hook to track application data.",
+          "Learned how to pass functions as props to allow child components (like the Delete button) to modify state in the parent.",
+          "Gained experience in conditional rendering (e.g., showing different messages based on the packing percentage)."
+        ]
+      },
+      {
+        title: "Future Improvements",
+        content: "The brief suggested adding sorting capabilities. In the future, I would implement a feature to sort items by 'Input Order', 'Description', or 'Packed Status' to make managing long lists easier."
+      }
+    ]
+  },
+  {
     id: 6,
     title: "Task List Manager App",
     description: "A functional mobile app prototype built with React Native. Created for a simulated internship assessment, it demonstrates core mobile development concepts including list rendering, stack navigation, and data manipulation.",
-    image: `${process.env.PUBLIC_URL}/images/mobile-thumb.jpg`, // Update this path!
+    image: `${process.env.PUBLIC_URL}/images/task manager/7.png`, // Update this path!
     category: "Mobile Development",
-    gallery: [], // Add your emulator screenshots here
+    gallery: [
+      `${process.env.PUBLIC_URL}/images/task manager/1.png`,
+      `${process.env.PUBLIC_URL}/images/task manager/2.png`,
+      `${process.env.PUBLIC_URL}/images/task manager/3.png`,
+      `${process.env.PUBLIC_URL}/images/task manager/4.png`,
+      `${process.env.PUBLIC_URL}/images/task manager/5.png`,
+      `${process.env.PUBLIC_URL}/images/task manager/6.png`,
+      `${process.env.PUBLIC_URL}/images/task manager/task manager MUTED.mp4`
+    ],
     sections: [
       {
         title: "Technologies Used",
@@ -134,9 +234,9 @@ export const projects = [
     gallery: [
       `${process.env.PUBLIC_URL}/images/VR Card/IMG_1568.png`,
       `${process.env.PUBLIC_URL}/images/VR Card/FULL JPG.jpeg`,
-      `${process.env.PUBLIC_URL}/images/VR Card/1.png`,
-      `${process.env.PUBLIC_URL}/images/VR Card/2.png`,
-      `${process.env.PUBLIC_URL}/images/VR Card/3.png`,
+      `${process.env.PUBLIC_URL}/images/VR Card/1.jpg`,
+      `${process.env.PUBLIC_URL}/images/VR Card/2.jpg`,
+      `${process.env.PUBLIC_URL}/images/VR Card/3.jpg`,
       `${process.env.PUBLIC_URL}/images/VR Card/Muhammad Hariz Video Submission.mp4`,
     ],
     sections: [
@@ -216,11 +316,12 @@ export const projects = [
   },
   {
     id: 3,
-    title: "Swiss Show Choir EXCO Windbreaker Design",
-    description: "Apparel design fully led by me to create a windbreaker for the Swiss Show Choir Executive Committee.",
+    title: "Swiss Show Choir EXCO Windbreaker",
+    description: "A custom-designed, reversible windbreaker created exclusively for the Swiss Show Choir Executive Committee. This project transformed a long-standing sentimental idea into a physical reality through my initiative and design leadership.",
     image: `${process.env.PUBLIC_URL}/images/CCA Windbreaker/Jacket_Black.JPEG`,
     category: "Design",
     gallery: [
+      `${process.env.PUBLIC_URL}/images/CCA Windbreaker/Jacket_White.JPEG`, // Showing the reversible side first
       `${process.env.PUBLIC_URL}/images/CCA Windbreaker/1.jpg`,
       `${process.env.PUBLIC_URL}/images/CCA Windbreaker/2.jpg`,
       `${process.env.PUBLIC_URL}/images/CCA Windbreaker/3.jpg`,
@@ -232,7 +333,28 @@ export const projects = [
       `${process.env.PUBLIC_URL}/images/CCA Windbreaker/9.jpg`,
       `${process.env.PUBLIC_URL}/images/CCA Windbreaker/10.jpg`,
       `${process.env.PUBLIC_URL}/images/CCA Windbreaker/11.jpg`,
-      `${process.env.PUBLIC_URL}/images/CCA Windbreaker/Jacket_White.JPEG`, 
+    ],
+    sections: [
+      {
+        title: "Tools Used",
+        content: "Procreate (iPad), Digital Imaging (High-Res PNG exports), Vendor Liaison"
+      },
+      {
+        title: "Design Features",
+        content: [
+          "Reversible Utility: I designed two distinct colorways (Black and White) that allow the jacket to be worn inside-out, doubling its versatility for different events.",
+          "High-Fidelity Raster Production: Unlike standard vector workflows, I worked closely with the manufacturer to ensure my high-resolution Procreate (PNG) exports were printed accurately on the fabric.",
+          "Sentimental Branding: The design features specific iconography representing our choir's identity, serving as a keepsake for the committee."
+        ]
+      },
+      {
+        title: "Role in the Project",
+        content: "I acted as the Lead Designer and Production Manager. The idea had been stuck in the 'group chat' stage due to our busy performance schedules. I took the initiative to restart the project, created the designs, collected sizing for all members, and served as the primary point of contact with the printing company."
+      },
+      {
+        title: "Challenges Faced",
+        content: "The biggest risk was the 'No-Sample' production run. To save time and costs, we decided to skip the physical prototype phase. This meant I had to be extremely precise with my digital files and communication with the vendor, as any mistake would ruin the entire batch. The risk paid off, and the final product matched the digital mockups perfectly."
+      }
     ]
   },
   {
