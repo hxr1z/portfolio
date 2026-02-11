@@ -1,21 +1,69 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
-import { projects } from '../data/projects';
+
+const getImageUrl = (path) => {
+  // If the path is already a full URL (like https://...), return it as is
+  if (path.startsWith('http')) return path;
+  
+  // Otherwise, prepend the PUBLIC_URL
+  // This ensures it works on GitHub Pages (e.g. /my-portfolio/images/...)
+  return process.env.PUBLIC_URL + path;
+};
 
 const ProjectDetail = () => {
   const { id } = useParams();
+  const [project, setProject] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [currentImage, setCurrentImage] = useState(0);
-  
-  // Find the project based on the ID from the URL
-  const project = projects ? projects.find(p => p.id === parseInt(id)) : null;
 
-  // Scroll to top when opening a new project
+  // --- FETCH DATA FROM SERVER ---
   useEffect(() => {
+    // 1. Scroll to top when ID changes
     window.scrollTo(0, 0);
+
+    // 2. Reset state
+    setLoading(true);
+
+    // 3. Fetch from your backend
+    fetch(`http://localhost:5000/api/projects/${id}`)
+      .then(res => {
+        if (!res.ok) throw new Error("Project not found");
+        return res.json();
+      })
+      .then(data => {
+        // --- CRITICAL: PARSE THE JSON FIELDS ---
+        // MySQL sends these as strings (e.g. "['img1.jpg']"), so we turn them back into Arrays.
+        const parsedProject = {
+          ...data,
+          // Map Database columns to Component names
+          image: data.image_url, 
+          link: data.live_link,
+          // Safe Parsing: Check if it's a string before parsing, otherwise use it as is (or empty array)
+          gallery: typeof data.gallery_images === 'string' 
+            ? JSON.parse(data.gallery_images) 
+            : (data.gallery_images || []),
+          sections: data.sections || []
+        };
+        
+        setProject(parsedProject);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error("Error:", err);
+        setLoading(false);
+        setProject(null);
+      });
   }, [id]);
 
-  // Handle case where project doesn't exist
+  // --- LOADING STATE ---
+  if (loading) return (
+    <div className="min-h-screen flex items-center justify-center bg-[#F9F9F9]">
+      <div className="animate-pulse text-indigo-600 font-bold tracking-widest">LOADING PROJECT...</div>
+    </div>
+  );
+
+  // --- NOT FOUND STATE ---
   if (!project) return (
     <div className="min-h-screen flex items-center justify-center bg-[#F9F9F9] flex-col gap-4">
       <h2 className="font-serif text-2xl">Project not found</h2>
@@ -40,10 +88,10 @@ const ProjectDetail = () => {
 
   // Helper to check if a file is a video
   const isVideo = (url) => {
-    if (!url) return false;
-    const lowerUrl = url.toLowerCase();
-    return lowerUrl.endsWith('.mp4') || lowerUrl.endsWith('.mov') || lowerUrl.endsWith('.webm');
-  };
+  if (!url) return false;
+  const lowerUrl = url.toLowerCase();
+  return lowerUrl.endsWith('.mp4') || lowerUrl.endsWith('.mov') || lowerUrl.endsWith('.webm');
+};
 
   return (
     <div className="min-h-screen bg-[#F9F9F9] py-20 px-6 font-sans text-black">
@@ -67,7 +115,7 @@ const ProjectDetail = () => {
         {/* --- Main Hero Image --- */}
         {project.image && (
           <div className="rounded-2xl overflow-hidden shadow-2xl shadow-indigo-100 mb-16 border-4 border-white">
-            <img src={project.image} alt={project.title} className="w-full h-auto object-cover" />
+            <img src={getImageUrl(project.image)} alt={project.title} className="w-full h-auto object-cover" />
           </div>
         )}
         
@@ -79,7 +127,7 @@ const ProjectDetail = () => {
             {project.description}
           </p>
 
-          {/* --- NEW LIVE LINK SECTION --- */}
+          {/* --- LIVE LINK SECTION --- */}
           {project.link && (
             <div className="mb-12 bg-indigo-50 p-6 rounded-xl border border-indigo-100 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
               <div>
@@ -98,7 +146,6 @@ const ProjectDetail = () => {
               </a>
             </div>
           )}
-          {/* ----------------------------- */}
 
           {/* 2. Dynamic Sections (Technologies, Features, Challenges, etc.) */}
           {project.sections && project.sections.map((section, index) => (
@@ -127,15 +174,6 @@ const ProjectDetail = () => {
               </div>
             </div>
           ))}
-
-          {/* Fallback if no sections exist yet */}
-          {!project.sections && (
-            <div className="bg-white p-8 rounded-xl border border-gray-100 shadow-sm">
-               <p className="text-gray-500 italic">
-                 Detailed overview coming soon.
-               </p>
-            </div>
-          )}
         </div>
 
         {/* --- GALLERY SECTION --- */}
@@ -148,15 +186,15 @@ const ProjectDetail = () => {
               {/* Media Display (Video or Image) */}
               {isVideo(project.gallery[currentImage]) ? (
                 <video 
-                  key={project.gallery[currentImage]}
-                  src={project.gallery[currentImage]} 
+                  key={getImageUrl(project.gallery[currentImage])}
+                  src={getImageUrl(project.gallery[currentImage])}
                   controls 
                   className="w-full h-full object-contain"
                 />
               ) : (
                 <img 
-                  key={project.gallery[currentImage]}
-                  src={project.gallery[currentImage]} 
+                  key={currentImage}
+                  src={getImageUrl(project.gallery[currentImage])}
                   alt={`Gallery slide ${currentImage + 1}`} 
                   className="w-full h-full object-contain transition-opacity duration-500"
                 />

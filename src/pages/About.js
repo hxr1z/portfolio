@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Download, Award, ExternalLink, Star, Users } from 'lucide-react';
-import { certificates } from '../data/certificates';
-import { ccaRecords } from '../data/cca';
 
-// --- Data (Skills) ---
+const getPublicUrl = (path) => {
+  if (!path) return "#";
+  if (path.startsWith('http')) return path;
+  return process.env.PUBLIC_URL + path;
+};
+// You can keep the 'skills' array hard-coded since it's just icons/static info
 const skills = [
   { name: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg' },
   { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg' },
@@ -19,20 +22,41 @@ const skills = [
 ];
 
 const About = () => {
+  // 1. ADD STATE
+  const [certificates, setCertificates] = useState([]);
+  const [ccaRecords, setCcaRecords] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  // --- REUSABLE TILE COMPONENT (Clean Version) ---
+  // 2. FETCH DATA
+  useEffect(() => {
+    // Fetch both tables at once
+    Promise.all([
+      fetch('http://localhost:5000/api/certificates').then(res => res.json()),
+      fetch('http://localhost:5000/api/activities').then(res => res.json())
+    ])
+    .then(([certsData, ccaData]) => {
+      setCertificates(certsData);
+      setCcaRecords(ccaData);
+      setLoading(false);
+    })
+    .catch(err => console.error("Error fetching about data:", err));
+  }, []);
+
+  // --- REUSABLE TILE COMPONENT (Updated to match DB fields) ---
   const DocumentCard = ({ item, icon: Icon, colorClass, linkText }) => (
     <div className="bg-white p-8 rounded-xl border border-gray-200 shadow-sm hover:border-indigo-200 hover:shadow-lg transition-all flex flex-col justify-between h-full">
       <div>
         <div className="flex justify-between items-start mb-6">
           <span className={`text-xs font-bold tracking-widest uppercase px-3 py-1 rounded ${colorClass} bg-opacity-10 text-opacity-100`}>
-            {item.date}
+            {/* DB column is 'date_issued' for certs, 'period' for activities. Check which one exists. */}
+            {item.date_issued || item.period}
           </span>
           {Icon && <Icon size={24} className="text-gray-300" />}
         </div>
         
         <h4 className="font-serif text-xl font-bold text-gray-900 mb-2">
-          {item.title}
+          {/* DB column is 'title' for certs, 'role' for activities. Use 'title' if it exists, else 'role' */}
+          {item.title || item.role}
         </h4>
         
         <p className="text-xs text-gray-500 uppercase tracking-wide mb-6">
@@ -40,7 +64,6 @@ const About = () => {
         </p>
 
         {item.description && (
-          // Full text display (No line-clamp)
           <p className="text-gray-600 text-sm leading-relaxed mb-8">
             {item.description}
           </p>
@@ -49,7 +72,7 @@ const About = () => {
 
       <div className="mt-auto pt-6 border-t border-gray-50">
         <a 
-          href={item.pdf} 
+          href={getPublicUrl(item.document_url)} // <--- NEW (Fixed)
           target="_blank" 
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-indigo-600 transition-colors"
@@ -60,10 +83,13 @@ const About = () => {
     </div>
   );
 
+  if (loading) return <div className="p-20 text-center">Loading info...</div>;
+
   return (
     <section className="py-12 px-6 md:px-12 max-w-6xl mx-auto">
+      {/* ... (The rest of your JSX Header/Resume/Bio stays exactly the same) ... */}
       
-      {/* --- Header & Resume --- */}
+      {/* Header & Resume */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 border-b border-gray-200 pb-8">
         <div>
           <h2 className="font-serif text-5xl md:text-6xl text-black mb-4 relative inline-block">
@@ -87,7 +113,7 @@ const About = () => {
 
       <div className="space-y-24">
         
-        {/* --- 1. Bio Section --- */}
+        {/* 1. Bio Section */}
         <div className="font-sans text-lg leading-relaxed text-gray-600 max-w-3xl">
           <p className="mb-6">
             I'm <span className="font-bold text-black">Hariz</span>, a Diploma in Digital Design and Development student at Republic Polytechnic.
@@ -97,7 +123,7 @@ const About = () => {
           </p>
         </div>
 
-        {/* --- 2. Technical Toolkit --- */}
+        {/* 2. Technical Toolkit */}
         <div>
           <h3 className="font-serif text-2xl font-bold mb-8 text-black">My Technical Toolkit</h3>
           <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-6">
@@ -112,15 +138,14 @@ const About = () => {
           </div>
         </div>
 
-        {/* --- 3. Co-Curricular & Leadership --- */}
+        {/* 3. Co-Curricular & Leadership */}
         <div>
           <h3 className="font-serif text-2xl font-bold mb-8 flex items-center gap-2 text-black">
             <Users className="text-orange-600" size={28} />
             Co-Curricular & Leadership
           </h3>
-          {/* Using 2 Columns (md:grid-cols-2) to ensure text fits comfortably */}
           <div className="grid md:grid-cols-2 gap-8">
-             {ccaRecords && ccaRecords.map((item) => (
+             {ccaRecords.map((item) => (
                <DocumentCard 
                   key={item.id} 
                   item={item} 
@@ -132,7 +157,7 @@ const About = () => {
           </div>
         </div>
 
-        {/* --- 4. Certifications --- */}
+        {/* 4. Certifications */}
         <div>
           <h3 className="font-serif text-2xl font-bold mb-8 flex items-center gap-2 text-black">
             <Award className="text-indigo-600" size={28} />
@@ -165,7 +190,6 @@ const About = () => {
             </p>
           </div>
         </div>
-
       </div>
     </section>
   );
