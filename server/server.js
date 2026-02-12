@@ -61,7 +61,7 @@ app.get('/api/projects/:id', async (req, res) => {
             // Parse sections if they are stored as JSON strings, otherwise keep as is
             sections: sections.map(s => ({
                 title: s.title,
-                content: typeof s.content === 'string' ? JSON.parse(s.content) : s.content
+                content: s.content
             })),
             // Map gallery results to a simple array of strings: ['/img/1.png', '/img/2.png']
             gallery: gallery.map(g => g.image_url)
