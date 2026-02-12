@@ -24,7 +24,7 @@ const ProjectDetail = () => {
     // Use config.API_URL if you created it, otherwise hardcode localhost for now
     const API_BASE = config?.API_URL || 'http://localhost:5000';
 
-    fetch(`${config.API_URL}/api/projects/${id}`)
+    fetch(`${API_BASE}/api/projects/${id}`)
       .then(res => {
         if (!res.ok) throw new Error("Project not found");
         return res.json();
