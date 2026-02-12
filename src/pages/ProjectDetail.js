@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
+import config from '../config'; // Ensure you have this file for prod/dev URL switching
 
+// Helper to fix image paths for GitHub Pages
 const getImageUrl = (path) => {
-  // If the path is already a full URL (like https://...), return it as is
+  if (!path) return "";
   if (path.startsWith('http')) return path;
-  
-  // Otherwise, prepend the PUBLIC_URL
-  // This ensures it works on GitHub Pages (e.g. /my-portfolio/images/...)
   return process.env.PUBLIC_URL + path;
 };
 
@@ -19,38 +18,29 @@ const ProjectDetail = () => {
 
   // --- FETCH DATA FROM SERVER ---
   useEffect(() => {
-    // 1. Scroll to top when ID changes
     window.scrollTo(0, 0);
-
-    // 2. Reset state
     setLoading(true);
 
-    // 3. Fetch from your backend
-    fetch(`http://localhost:5000/api/projects/${id}`)
+    // Use config.API_URL if you created it, otherwise hardcode localhost for now
+    const API_BASE = config?.API_URL || 'http://localhost:5000';
+
+    fetch(`${config.API_URL}/api/projects/${id}`)
       .then(res => {
         if (!res.ok) throw new Error("Project not found");
         return res.json();
       })
       .then(data => {
-        // --- CRITICAL: PARSE THE JSON FIELDS ---
-        // MySQL sends these as strings (e.g. "['img1.jpg']"), so we turn them back into Arrays.
-        const parsedProject = {
+        // The backend now handles the heavy lifting (joins and parsing).
+        // We just need to ensure arrays exist to prevent crashes.
+        setProject({
           ...data,
-          // Map Database columns to Component names
-          image: data.image_url, 
-          link: data.live_link,
-          // Safe Parsing: Check if it's a string before parsing, otherwise use it as is (or empty array)
-          gallery: typeof data.gallery_images === 'string' 
-            ? JSON.parse(data.gallery_images) 
-            : (data.gallery_images || []),
+          gallery: data.gallery || [],
           sections: data.sections || []
-        };
-        
-        setProject(parsedProject);
+        });
         setLoading(false);
       })
       .catch(err => {
-        console.error("Error:", err);
+        console.error("Error fetching project:", err);
         setLoading(false);
         setProject(null);
       });
@@ -73,7 +63,7 @@ const ProjectDetail = () => {
 
   const hasGallery = project.gallery && project.gallery.length > 0;
   
-  // Gallery Navigation Functions
+  // Gallery Navigation
   const nextImage = () => {
     if (hasGallery) {
       setCurrentImage((prev) => (prev === project.gallery.length - 1 ? 0 : prev + 1));
@@ -88,10 +78,10 @@ const ProjectDetail = () => {
 
   // Helper to check if a file is a video
   const isVideo = (url) => {
-  if (!url) return false;
-  const lowerUrl = url.toLowerCase();
-  return lowerUrl.endsWith('.mp4') || lowerUrl.endsWith('.mov') || lowerUrl.endsWith('.webm');
-};
+    if (!url) return false;
+    const lowerUrl = url.toLowerCase();
+    return lowerUrl.endsWith('.mp4') || lowerUrl.endsWith('.mov') || lowerUrl.endsWith('.webm');
+  };
 
   return (
     <div className="min-h-screen bg-[#F9F9F9] py-20 px-6 font-sans text-black">
@@ -150,25 +140,19 @@ const ProjectDetail = () => {
           {/* 2. Dynamic Sections (Technologies, Features, Challenges, etc.) */}
           {project.sections && project.sections.map((section, index) => (
             <div key={index} className="mb-8 overflow-hidden rounded-xl border border-indigo-100 shadow-sm bg-white">
-              
-              {/* Colored Header Bar */}
               <div className="bg-indigo-600 px-6 py-3">
                 <h3 className="text-white font-bold text-lg tracking-wide">
                   {section.title}
                 </h3>
               </div>
-
-              {/* Content Area */}
               <div className="p-6 text-gray-700 leading-relaxed">
                 {Array.isArray(section.content) ? (
-                  // If content is an array, render bullet points
                   <ul className="list-disc list-outside ml-5 space-y-2">
                     {section.content.map((item, i) => (
                       <li key={i}>{item}</li>
                     ))}
                   </ul>
                 ) : (
-                  // If content is a string, render a paragraph
                   <p>{section.content}</p>
                 )}
               </div>
@@ -200,7 +184,7 @@ const ProjectDetail = () => {
                 />
               )}
 
-              {/* Navigation Controls (Only if > 1 image) */}
+              {/* Navigation Controls */}
               {project.gallery.length > 1 && (
                 <>
                   <div className="absolute inset-0 flex items-center justify-between p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">

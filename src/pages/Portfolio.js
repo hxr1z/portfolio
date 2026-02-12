@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import config from '../config';
 
 const categories = ['All', 'Immersive Technologies', 'Mobile Development', 'Web Development', 'Design', 'Multimedia'];
 const getImageUrl = (path) => {
@@ -21,7 +22,7 @@ const Portfolio = () => {
   // 3. Fetch data when the page loads
   // 3. Fetch data when the page loads
   useEffect(() => {
-    fetch('http://localhost:5000/api/projects')
+    fetch(`${config.API_URL}/api/projects`)
       .then(res => res.json())
       .then(data => {
         console.log("SERVER RESPONSE:", data); // <--- Add this!

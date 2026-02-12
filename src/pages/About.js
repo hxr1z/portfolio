@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Download, Award, ExternalLink, Star, Users } from 'lucide-react';
+import config from '../config';
 
 const getPublicUrl = (path) => {
   if (!path) return "#";
@@ -31,8 +32,8 @@ const About = () => {
   useEffect(() => {
     // Fetch both tables at once
     Promise.all([
-      fetch('http://localhost:5000/api/certificates').then(res => res.json()),
-      fetch('http://localhost:5000/api/activities').then(res => res.json())
+      fetch(`${config.API_URL}/api/certificates`).then(res => res.json()),
+      fetch(`${config.API_URL}/api/activities`).then(res => res.json())
     ])
     .then(([certsData, ccaData]) => {
       setCertificates(certsData);
