@@ -103,7 +103,7 @@ const About = () => {
         </div>
         
         <a 
-          href={`${process.env.PUBLIC_URL}/DDDD_Resume_Hariz_2025.pdf`}
+          href={`${process.env.PUBLIC_URL}/documents/hariz-resume-2025.pdf`}
           download 
           className="mt-6 md:mt-0 inline-flex items-center gap-3 px-6 py-3 bg-black text-white text-xs font-bold tracking-widest uppercase hover:bg-indigo-600 transition-colors rounded-sm"
         >
