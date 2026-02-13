@@ -123,7 +123,7 @@ const ProjectDetail = () => {
               <div>
                 <h3 className="font-bold text-lg text-indigo-900 m-0">Live Demo Available</h3>
                 <p className="text-indigo-700 text-sm m-0 mt-1">
-                  You can test the full functionality of this app directly in your browser.
+                  You can test the full functionality of this project directly in your browser.
                 </p>
               </div>
               <a 
@@ -132,7 +132,7 @@ const ProjectDetail = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700 transition-colors shadow-md hover:shadow-lg whitespace-nowrap no-underline"
               >
-                Launch App <ExternalLink size={18} />
+                Launch <ExternalLink size={18} />
               </a>
             </div>
           )}
