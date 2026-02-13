@@ -56,7 +56,6 @@ const Portfolio = () => {
       <div className="text-center mb-16">
         <h2 className="font-serif text-5xl md:text-6xl mb-6 relative inline-block">
           My Works
-          <span className="absolute -bottom-2 left-0 w-full h-1 bg-indigo-50 bg-opacity-50 rounded-full"></span>
         </h2>
         <p className="text-gray-500 max-w-lg mx-auto">
           A curated selection of my projects across development, design, and immersive tech.

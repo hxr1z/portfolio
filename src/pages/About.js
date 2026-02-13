@@ -95,7 +95,6 @@ const About = () => {
         <div>
           <h2 className="font-serif text-5xl md:text-6xl text-black mb-4 relative inline-block">
             About Me
-            <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-indigo-500 rounded-full"></span>
           </h2>
           <p className="text-gray-500 text-lg max-w-xl mt-4">
             Digital designer, developer, and creative problem solver based in Singapore.

@@ -6,8 +6,7 @@ const Contact = () => {
       <div className="max-w-4xl mx-auto">
         <h2 className="font-serif text-5xl md:text-6xl text-left mb-12 relative inline-block">
           Contact Me!
-          <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-indigo-500 rounded-full"></span>
-        </h2>
+z        </h2>
 
         <div className="mb-12 font-sans text-base md:text-lg text-gray-600 space-y-4">
             <p>
