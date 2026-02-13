@@ -4,23 +4,17 @@ import config from '../config';
 
 const categories = ['All', 'Immersive Technologies', 'Mobile Development', 'Web Development', 'Design', 'Multimedia'];
 const getImageUrl = (path) => {
-  // If the path is already a full URL (like https://...), return it as is
   if (path.startsWith('http')) return path;
   
-  // Otherwise, prepend the PUBLIC_URL
-  // This ensures it works on GitHub Pages (e.g. /my-portfolio/images/...)
   return process.env.PUBLIC_URL + path;
 };
 
 const Portfolio = () => {
   const [activeTab, setActiveTab] = useState('All');
   
-  // 2. Add State for data
   const [projects, setProjects] = useState([]); 
   const [loading, setLoading] = useState(true);
 
-  // 3. Fetch data when the page loads
-  // 3. Fetch data when the page loads
   useEffect(() => {
     fetch(`${config.API_URL}/api/projects`)
       .then(res => res.json())
@@ -28,10 +22,8 @@ const Portfolio = () => {
         console.log("SERVER RESPONSE:", data); // <--- Add this!
         
         if (Array.isArray(data)) {
-           // Success: It's a list!
            setProjects(data);
         } else {
-           // Failure: It's an error object
            console.error("Server returned an error instead of a list:", data);
         }
         setLoading(false);
@@ -44,7 +36,6 @@ const Portfolio = () => {
 
   if (loading) return <div className="text-center py-20">Loading...</div>;
 
-  // ... The rest of your filtering logic works exactly the same!
   const filteredProjects = activeTab === 'All' 
     ? projects 
     : projects.filter(project => project.category === activeTab);

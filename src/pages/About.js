@@ -7,7 +7,6 @@ const getPublicUrl = (path) => {
   if (path.startsWith('http')) return path;
   return process.env.PUBLIC_URL + path;
 };
-// You can keep the 'skills' array hard-coded since it's just icons/static info
 const skills = [
   { name: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg' },
   { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg' },
@@ -27,14 +26,11 @@ const skills = [
 ];
 
 const About = () => {
-  // 1. ADD STATE
   const [certificates, setCertificates] = useState([]);
   const [ccaRecords, setCcaRecords] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // 2. FETCH DATA
   useEffect(() => {
-    // Fetch both tables at once
     Promise.all([
       fetch(`${config.API_URL}/api/certificates`).then(res => res.json()),
       fetch(`${config.API_URL}/api/activities`).then(res => res.json())
@@ -47,7 +43,6 @@ const About = () => {
     .catch(err => console.error("Error fetching about data:", err));
   }, []);
 
-  // --- REUSABLE TILE COMPONENT (Updated to match DB fields) ---
   const DocumentCard = ({ item, icon: Icon, colorClass, linkText }) => (
     <div className="bg-white p-8 rounded-xl border border-gray-200 shadow-sm hover:border-indigo-200 hover:shadow-lg transition-all flex flex-col justify-between h-full">
       <div>
@@ -91,9 +86,7 @@ const About = () => {
   if (loading) return <div className="p-20 text-center">Loading info...</div>;
 
   return (
-    <section className="py-12 px-6 md:px-12 max-w-6xl mx-auto">
-      {/* ... (The rest of your JSX Header/Resume/Bio stays exactly the same) ... */}
-      
+    <section className="py-12 px-6 md:px-12 max-w-6xl mx-auto">      
       {/* Header & Resume */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 border-b border-gray-200 pb-8">
         <div>

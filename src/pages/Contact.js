@@ -19,9 +19,8 @@ z        </h2>
             </p>
         </div>
 
-        {/* --- FORM UPDATE START --- */}
         <form 
-          action="https://formspree.io/f/xldqoaok" // <--- PASTE YOUR ID HERE
+          action="https://formspree.io/f/xldqoaok" 
           method="POST"
           className="space-y-6 bg-white p-8 md:p-12 rounded-2xl shadow-xl shadow-gray-100"
         >
@@ -52,7 +51,6 @@ z        </h2>
             </button>
             </div>
         </form>
-        {/* --- FORM UPDATE END --- */}
 
       </div>
     </section>

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
-import config from '../config'; // Ensure you have this file for prod/dev URL switching
+import config from '../config'; 
 
-// Helper to fix image paths for GitHub Pages
 const getImageUrl = (path) => {
   if (!path) return "";
   if (path.startsWith('http')) return path;
@@ -16,12 +15,10 @@ const ProjectDetail = () => {
   const [loading, setLoading] = useState(true);
   const [currentImage, setCurrentImage] = useState(0);
 
-  // --- FETCH DATA FROM SERVER ---
   useEffect(() => {
     window.scrollTo(0, 0);
     setLoading(true);
 
-    // Use config.API_URL if you created it, otherwise hardcode localhost for now
     const API_BASE = config?.API_URL || 'http://localhost:5000';
 
     fetch(`${API_BASE}/api/projects/${id}`)
@@ -30,8 +27,6 @@ const ProjectDetail = () => {
         return res.json();
       })
       .then(data => {
-        // The backend now handles the heavy lifting (joins and parsing).
-        // We just need to ensure arrays exist to prevent crashes.
         setProject({
           ...data,
           gallery: data.gallery || [],
@@ -46,14 +41,12 @@ const ProjectDetail = () => {
       });
   }, [id]);
 
-  // --- LOADING STATE ---
   if (loading) return (
     <div className="min-h-screen flex items-center justify-center bg-[#F9F9F9]">
       <div className="animate-pulse text-indigo-600 font-bold tracking-widest">LOADING PROJECT...</div>
     </div>
   );
 
-  // --- NOT FOUND STATE ---
   if (!project) return (
     <div className="min-h-screen flex items-center justify-center bg-[#F9F9F9] flex-col gap-4">
       <h2 className="font-serif text-2xl">Project not found</h2>
@@ -63,7 +56,6 @@ const ProjectDetail = () => {
 
   const hasGallery = project.gallery && project.gallery.length > 0;
   
-  // Gallery Navigation
   const nextImage = () => {
     if (hasGallery) {
       setCurrentImage((prev) => (prev === project.gallery.length - 1 ? 0 : prev + 1));
@@ -76,7 +68,6 @@ const ProjectDetail = () => {
     }
   };
 
-  // Helper to check if a file is a video
   const isVideo = (url) => {
     if (!url) return false;
     const lowerUrl = url.toLowerCase();

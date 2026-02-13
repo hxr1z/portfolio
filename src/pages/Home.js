@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 
-// --- Mood Board Images ---
 const moodImages = [
   { 
     src: `${process.env.PUBLIC_URL}/images/Home/h5.JPG`, 
@@ -20,7 +19,6 @@ const moodImages = [
     src: `${process.env.PUBLIC_URL}/images/Home/h4.jpg`, 
     className: "bottom-5 right-5 md:bottom-12 md:right-32 rotate-[-8deg]",
   },
-  // Side images for extra width coverage on desktop
   { 
     src: `${process.env.PUBLIC_URL}/images/Home/h1.JPG`, 
     className: "hidden md:block top-1/2 left-10 -translate-y-1/2 -rotate-12",
@@ -35,14 +33,10 @@ const Home = () => {
   return (
     <section className="min-h-screen flex flex-col justify-center items-center relative overflow-hidden px-6 text-center bg-[#F9F9F9]">
       
-      {/* --- SCATTERED IMAGES --- */}
-      {/* Added pointer-events-none to container, but pointer-events-auto to images so they work */}
       <div className="absolute inset-0 w-full h-full pointer-events-none select-none">
         {moodImages.map((img, index) => (
           <div 
             key={index}
-            // FIXED: Removed 'opacity-0' and 'animate-fade-in-up'. 
-            // Added 'pointer-events-auto' so you can hover them.
             className={`absolute w-32 md:w-52 aspect-[3/4] bg-white p-2 shadow-2xl rounded-sm transform transition-all hover:scale-110 hover:z-50 duration-500 ease-out pointer-events-auto ${img.className}`}
           >
             <img 
@@ -54,7 +48,6 @@ const Home = () => {
         ))}
       </div>
 
-      {/* --- CENTRAL CONTENT --- */}
       <div className="z-10 relative max-w-4xl mx-auto pointer-events-none">
         
         <p className="text-sm md:text-base font-bold text-indigo-600 mb-6 tracking-widest uppercase">
