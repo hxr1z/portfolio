@@ -1,1 +1,72 @@
-[{"id": 1, "title": "Edusave Good Progress Award", "issuer": "MOE Singapore", "date_issued": "2019", "document_url": "/certificates/edusave-good-progress-2019.pdf"}, {"id": 2, "title": "Edusave Character Award", "issuer": "MOE Singapore", "date_issued": "2020", "document_url": "/certificates/edusave-character-2020.pdf"}, {"id": 3, "title": "Edusave Scholarship", "issuer": "MOE Singapore", "date_issued": "2020", "document_url": "/certificates/edusave-scholarship-2020.pdf"}, {"id": 4, "title": "The Glocal Perspectives Programme", "issuer": "Swiss Cottage Secondary School", "date_issued": "2021", "document_url": "/certificates/glocal-perspectives.pdf"}, {"id": 5, "title": "Certificate of Participation", "issuer": "Outward Bound Singapore", "date_issued": "2022", "document_url": "/certificates/outward-bound-singapore.pdf"}, {"id": 6, "title": "Edusave EAGLES Award 2023", "issuer": "MOE Singapore", "date_issued": "2023", "document_url": "/certificates/edusave-eagles-2023.pdf"}, {"id": 7, "title": "Data Analytics in Power BI", "issuer": "Republic Polytechnic", "date_issued": "2024", "document_url": "/certificates/power-bi-republic-poly.pdf"}, {"id": 8, "title": "CSS (Basic)", "issuer": "HackerRank", "date_issued": "2025", "document_url": "/certificates/css-certificate.pdf"}, {"id": 9, "title": "JavaScript (Basic)", "issuer": "HackerRank", "date_issued": "2025", "document_url": "/certificates/javascript-basic-certificate.pdf"}, {"id": 10, "title": "React (Basic)", "issuer": "HackerRank", "date_issued": "2026", "document_url": "/certificates/react-basic-certificate.pdf"}]
+[
+  {
+    "id": 1,
+    "title": "Edusave Good Progress Award",
+    "issuer": "MOE Singapore",
+    "date_issued": "2019",
+    "document_url": "/certificates/edusave-good-progress-2019.pdf"
+  },
+  {
+    "id": 2,
+    "title": "Edusave Character Award",
+    "issuer": "MOE Singapore",
+    "date_issued": "2020",
+    "document_url": "/certificates/edusave-character-2020.pdf"
+  },
+  {
+    "id": 3,
+    "title": "Edusave Scholarship",
+    "issuer": "MOE Singapore",
+    "date_issued": "2020",
+    "document_url": "/certificates/edusave-scholarship-2020.pdf"
+  },
+  {
+    "id": 4,
+    "title": "The Glocal Perspectives Programme",
+    "issuer": "Swiss Cottage Secondary School",
+    "date_issued": "2021",
+    "document_url": "/certificates/glocal-perspectives.pdf"
+  },
+  {
+    "id": 5,
+    "title": "Certificate of Participation",
+    "issuer": "Outward Bound Singapore",
+    "date_issued": "2022",
+    "document_url": "/certificates/outward-bound-singapore.pdf"
+  },
+  {
+    "id": 6,
+    "title": "Edusave EAGLES Award 2023",
+    "issuer": "MOE Singapore",
+    "date_issued": "2023",
+    "document_url": "/certificates/edusave-eagles-2023.pdf"
+  },
+  {
+    "id": 7,
+    "title": "Data Analytics in Power BI",
+    "issuer": "Republic Polytechnic",
+    "date_issued": "2024",
+    "document_url": "/certificates/power-bi-republic-poly.pdf"
+  },
+  {
+    "id": 8,
+    "title": "CSS (Basic)",
+    "issuer": "HackerRank",
+    "date_issued": "2025",
+    "document_url": "/certificates/css-certificate.pdf"
+  },
+  {
+    "id": 9,
+    "title": "JavaScript (Basic)",
+    "issuer": "HackerRank",
+    "date_issued": "2025",
+    "document_url": "/certificates/javascript-basic-certificate.pdf"
+  },
+  {
+    "id": 10,
+    "title": "React (Basic)",
+    "issuer": "HackerRank",
+    "date_issued": "2026",
+    "document_url": "/certificates/react-basic-certificate.pdf"
+  }
+]
