@@ -12,7 +12,7 @@ import ProjectDetail from './pages/ProjectDetail';
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
-
+  
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
@@ -22,7 +22,11 @@ const Navbar = () => {
 
   return (
     <nav className="fixed w-full z-50 bg-[#F9F9F9]/95 backdrop-blur-md py-4 border-b border-gray-200 transition-all duration-300">
-      <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
+      {/* 
+          FIX 1: Added "relative z-50" to this container. 
+          This ensures the Logo and Toggle Button stay ABOVE the menu overlay.
+      */}
+      <div className="max-w-6xl mx-auto px-6 flex justify-between items-center relative z-50">
         <Link to="/" className="text-xl font-serif font-bold tracking-tight text-black">
           TheHarizPortfolio
         </Link>
@@ -43,21 +47,25 @@ const Navbar = () => {
           })}
         </div>
 
-        {/* Mobile Toggle */}
-        <button className="md:hidden text-black" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+        {/* Mobile Toggle Button */}
+        <button 
+          className="md:hidden text-black focus:outline-none" 
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle Menu"
+        >
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 bg-[#F9F9F9] z-40 flex flex-col items-center justify-center space-y-8 md:hidden">
+        <div className="fixed inset-0 bg-[#F9F9F9] z-40 flex flex-col items-center justify-center space-y-8 md:hidden animate-in fade-in zoom-in duration-300">
           {navLinks.map((item) => (
             <Link 
               key={item.name}
               to={item.path}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="text-3xl font-serif text-black hover:text-indigo-600"
+              className="text-3xl font-serif text-black hover:text-indigo-600 transition-all active:scale-95"
             >
               {item.name}
             </Link>
