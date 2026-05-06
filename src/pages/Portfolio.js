@@ -15,17 +15,15 @@ const Portfolio = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-  // Directly fetch the local JSON file
-    fetch('/data/projects.json') 
+    // Use backticks and the PUBLIC_URL variable
+    fetch(`${process.env.PUBLIC_URL}/data/projects.json`) 
       .then(res => res.json())
       .then(data => {
-        if (Array.isArray(data)) {
-          setProjects(data);
-        }
+        setProjects(data);
         setLoading(false);
       })
       .catch(err => {
-        console.error("Error fetching projects:", err);
+        console.error("Error loading projects:", err);
         setLoading(false);
       });
   }, []);

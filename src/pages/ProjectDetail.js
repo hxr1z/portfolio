@@ -18,12 +18,10 @@ const ProjectDetail = () => {
     window.scrollTo(0, 0);
     setLoading(true);
 
-    fetch('/data/projects.json')
+    fetch(`${process.env.PUBLIC_URL}/data/projects.json`)
       .then(res => res.json())
       .then(allProjects => {
-        // Logic must stay inside this .then block so 'foundProject' is defined
         const foundProject = allProjects.find(p => p.id === parseInt(id));
-        
         if (foundProject) {
           setProject({
             ...foundProject,
@@ -32,13 +30,11 @@ const ProjectDetail = () => {
             gallery: foundProject.gallery || [],
             sections: foundProject.sections || []
           });
-        } else {
-          setProject(null);
         }
         setLoading(false);
       })
       .catch(err => {
-        console.error("Error loading project:", err);
+        console.error("Error loading project detail:", err);
         setLoading(false);
       });
   }, [id]);
