@@ -18,7 +18,7 @@ const ProjectDetail = () => {
     window.scrollTo(0, 0);
     setLoading(true);
 
-    fetch('./data/projects.json')
+    fetch('/data/projects.json')
       .then(res => res.json())
       .then(allProjects => {
         // Logic must stay inside this .then block so 'foundProject' is defined

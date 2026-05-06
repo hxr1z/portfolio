@@ -31,8 +31,8 @@ const About = () => {
 
   useEffect(() => {
     Promise.all([
-      fetch('./data/certificates.json').then(res => res.json()),
-      fetch('./data/activities.json').then(res => res.json())
+      fetch('/data/certificates.json').then(res => res.json()),
+      fetch('/data/activities.json').then(res => res.json())
     ])
     .then(([certsData, ccaData]) => {
       setCertificates(certsData);

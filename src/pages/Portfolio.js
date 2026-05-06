@@ -16,7 +16,7 @@ const Portfolio = () => {
 
   useEffect(() => {
   // Directly fetch the local JSON file
-    fetch('./data/projects.json') 
+    fetch('/data/projects.json') 
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) {
