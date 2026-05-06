@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Download, Award, ExternalLink, Star, Users } from 'lucide-react';
-import config from '../config';
 
 const getPublicUrl = (path) => {
   if (!path) return "#";
@@ -40,8 +39,8 @@ const About = () => {
       setCcaRecords(ccaData);
       setLoading(false);
     })
-    .catch(err => console.error("Error fetching about data:", err));
-    }, []);
+    .catch(err => console.error("Error fetching data:", err));
+  }, []);
 
   const DocumentCard = ({ item, icon: Icon, colorClass, linkText }) => (
     <div className="bg-white p-8 rounded-xl border border-gray-200 shadow-sm hover:border-indigo-200 hover:shadow-lg transition-all flex flex-col justify-between h-full">

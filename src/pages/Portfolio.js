@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import config from '../config';
 
 const categories = ['All', 'Immersive Technologies', 'Mobile Development', 'Web Development', 'Design', 'Multimedia'];
 const getImageUrl = (path) => {
@@ -16,15 +15,12 @@ const Portfolio = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('./data/projects.json')
+  // Directly fetch the local JSON file
+    fetch('./data/projects.json') 
       .then(res => res.json())
       .then(data => {
-        console.log("SERVER RESPONSE:", data); // <--- Add this!
-        
         if (Array.isArray(data)) {
-           setProjects(data);
-        } else {
-           console.error("Server returned an error instead of a list:", data);
+          setProjects(data);
         }
         setLoading(false);
       })

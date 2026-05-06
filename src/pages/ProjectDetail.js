@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
-import config from '../config'; 
 
 const getImageUrl = (path) => {
   if (!path) return "";
@@ -19,27 +18,28 @@ const ProjectDetail = () => {
     window.scrollTo(0, 0);
     setLoading(true);
 
-    const API_BASE = config?.API_URL || 'http://localhost:5000';
-
-    fetch(`${API_BASE}/api/projects/${id}`)
-      .then(res => {
-        if (!res.ok) throw new Error("Project not found");
-        return res.json();
-      })
-      .then(data => {
-        setProject({
-          ...foundProject,
-          image: foundProject.image_url, // Maps JSON image_url to UI 'image'
-          link: foundProject.live_link,   // Maps JSON live_link to UI 'link'
-          gallery: foundProject.gallery || [],
-          sections: foundProject.sections || []
-        });
+    fetch('./data/projects.json')
+      .then(res => res.json())
+      .then(allProjects => {
+        // Logic must stay inside this .then block so 'foundProject' is defined
+        const foundProject = allProjects.find(p => p.id === parseInt(id));
+        
+        if (foundProject) {
+          setProject({
+            ...foundProject,
+            image: foundProject.image_url,
+            link: foundProject.live_link,
+            gallery: foundProject.gallery || [],
+            sections: foundProject.sections || []
+          });
+        } else {
+          setProject(null);
+        }
         setLoading(false);
       })
       .catch(err => {
-        console.error("Error fetching project:", err);
+        console.error("Error loading project:", err);
         setLoading(false);
-        setProject(null);
       });
   }, [id]);
 
