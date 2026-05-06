@@ -32,8 +32,8 @@ const About = () => {
 
   useEffect(() => {
     Promise.all([
-      fetch(`${config.API_URL}/api/certificates`).then(res => res.json()),
-      fetch(`${config.API_URL}/api/activities`).then(res => res.json())
+      fetch('./data/certificates.json').then(res => res.json()),
+      fetch('./data/activities.json').then(res => res.json())
     ])
     .then(([certsData, ccaData]) => {
       setCertificates(certsData);
@@ -41,7 +41,7 @@ const About = () => {
       setLoading(false);
     })
     .catch(err => console.error("Error fetching about data:", err));
-  }, []);
+    }, []);
 
   const DocumentCard = ({ item, icon: Icon, colorClass, linkText }) => (
     <div className="bg-white p-8 rounded-xl border border-gray-200 shadow-sm hover:border-indigo-200 hover:shadow-lg transition-all flex flex-col justify-between h-full">

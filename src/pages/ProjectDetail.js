@@ -28,9 +28,11 @@ const ProjectDetail = () => {
       })
       .then(data => {
         setProject({
-          ...data,
-          gallery: data.gallery || [],
-          sections: data.sections || []
+          ...foundProject,
+          image: foundProject.image_url, // Maps JSON image_url to UI 'image'
+          link: foundProject.live_link,   // Maps JSON live_link to UI 'link'
+          gallery: foundProject.gallery || [],
+          sections: foundProject.sections || []
         });
         setLoading(false);
       })

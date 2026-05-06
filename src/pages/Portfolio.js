@@ -16,7 +16,7 @@ const Portfolio = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`${config.API_URL}/api/projects`)
+    fetch('./data/projects.json')
       .then(res => res.json())
       .then(data => {
         console.log("SERVER RESPONSE:", data); // <--- Add this!
